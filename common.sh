@@ -4,6 +4,8 @@
 
 Diy_all() {
 echo "all"
+mv build/${Modelfile}/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
+chmod +x package/base-files/files/bin/* ./
 git clone https://github.com/281677160/luci-app-autoupdate package/luci-app-autoupdate
 svn co https://github.com/jerrykuku/luci-theme-argon/branches/18.06 package/luci-theme-argon
 svn co https://github.com/jerrykuku/luci-app-argon-config/trunk package/luci-app-argon-config
