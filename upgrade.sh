@@ -3,8 +3,6 @@
 # AutoBuild Module by Hyy2001
 # AutoBuild Functions
 GET_TARGET_INFO() {
-	Home=${GITHUB_WORKSPACE}/openwrt
-	echo "Home Path: ${Home}"
 	[ -f ${GITHUB_WORKSPACE}/Openwrt.info ] && . ${GITHUB_WORKSPACE}/Openwrt.info
 	TARGET1="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
 	TARGET2="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
@@ -73,7 +71,7 @@ GET_TARGET_INFO() {
 	esac
 	case "${TARGET_PROFILE}" in
 	x86-64)
-		GZIP="$(grep "CONFIG_TARGET_IMAGES_GZIP" ${Home}/.config)"
+		GZIP="$(grep "CONFIG_TARGET_IMAGES_GZIP" .config)"
 		if [[ "${GZIP}" == "CONFIG_TARGET_IMAGES_GZIP=y" ]];then
 			Firmware_sfx="img.gz"
 		else
@@ -124,17 +122,17 @@ Diy_Part3() {
 			if [ -f "${Legacy_Firmware}" ];then
 				_MD5=$(md5sum ${Legacy_Firmware} | cut -d ' ' -f1)
 				_SHA256=$(sha256sum ${Legacy_Firmware} | cut -d ' ' -f1)
-				touch ${Home}/bin/Firmware/${AutoBuild_Firmware}.detail
-				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > ${Home}/bin/Firmware/${AutoBuild_Firmware}-Legacy.detail
-				cp -a ${Legacy_Firmware} ${Home}/bin/Firmware/${AutoBuild_Firmware}-Legacy.${Firmware_sfx}
+				touch bin/Firmware/${AutoBuild_Firmware}.detail
+				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > bin/Firmware/${AutoBuild_Firmware}-Legacy.detail
+				cp -a ${Legacy_Firmware} bin/Firmware/${AutoBuild_Firmware}-Legacy.${Firmware_sfx}
 				echo "Legacy Firmware is detected !"
 			fi
 			if [ -f "${EFI_Firmware}" ];then
 				_MD5=$(md5sum ${EFI_Firmware} | cut -d ' ' -f1)
 				_SHA256=$(sha256sum ${EFI_Firmware} | cut -d ' ' -f1)
-				touch ${Home}/bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
-				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > ${Home}/bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
-				cp ${EFI_Firmware} ${Home}/bin/Firmware/${AutoBuild_Firmware}-UEFI.${Firmware_sfx}
+				touch bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
+				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
+				cp ${EFI_Firmware} bin/Firmware/${AutoBuild_Firmware}-UEFI.${Firmware_sfx}
 				echo "UEFI Firmware is detected !"
 			fi
 		fi
@@ -146,17 +144,17 @@ Diy_Part3() {
 			if [ -f "${Legacy_Firmware}" ];then
 				_MD5=$(md5sum ${Legacy_Firmware} | cut -d ' ' -f1)
 				_SHA256=$(sha256sum ${Legacy_Firmware} | cut -d ' ' -f1)
-				touch ${Home}/bin/Firmware/${AutoBuild_Firmware}.detail
-				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > ${Home}/bin/Firmware/${AutoBuild_Firmware}-Legacy.detail
-				cp -a ${Legacy_Firmware} ${Home}/bin/Firmware/${AutoBuild_Firmware}-Legacy.${Firmware_sfx}
+				touch bin/Firmware/${AutoBuild_Firmware}.detail
+				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > bin/Firmware/${AutoBuild_Firmware}-Legacy.detail
+				cp -a ${Legacy_Firmware} bin/Firmware/${AutoBuild_Firmware}-Legacy.${Firmware_sfx}
 				echo "Legacy Firmware is detected !"
 			fi
 			if [ -f "${EFI_Firmware}" ];then
 				_MD5=$(md5sum ${EFI_Firmware} | cut -d ' ' -f1)
 				_SHA256=$(sha256sum ${EFI_Firmware} | cut -d ' ' -f1)
-				touch ${Home}/bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
-				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > ${Home}/bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
-				cp ${EFI_Firmware} ${Home}/bin/Firmware/${AutoBuild_Firmware}-UEFI.${Firmware_sfx}
+				touch bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
+				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
+				cp ${EFI_Firmware} bin/Firmware/${AutoBuild_Firmware}-UEFI.${Firmware_sfx}
 				echo "UEFI Firmware is detected !"
 			fi
 		fi
@@ -168,23 +166,22 @@ Diy_Part3() {
 			if [ -f "${Legacy_Firmware}" ];then
 				_MD5=$(md5sum ${Legacy_Firmware} | cut -d ' ' -f1)
 				_SHA256=$(sha256sum ${Legacy_Firmware} | cut -d ' ' -f1)
-				touch ${Home}/bin/Firmware/${AutoBuild_Firmware}.detail
-				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > ${Home}/bin/Firmware/${AutoBuild_Firmware}-Legacy.detail
-				cp -a ${Legacy_Firmware} ${Home}/bin/Firmware/${AutoBuild_Firmware}-Legacy.${Firmware_sfx}
+				touch bin/Firmware/${AutoBuild_Firmware}.detail
+				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > bin/Firmware/${AutoBuild_Firmware}-Legacy.detail
+				cp -a ${Legacy_Firmware} bin/Firmware/${AutoBuild_Firmware}-Legacy.${Firmware_sfx}
 				echo "Legacy Firmware is detected !"
 			fi
 			if [ -f "${EFI_Firmware}" ];then
 				_MD5=$(md5sum ${EFI_Firmware} | cut -d ' ' -f1)
 				_SHA256=$(sha256sum ${EFI_Firmware} | cut -d ' ' -f1)
-				touch ${Home}/bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
-				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > ${Home}/bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
-				cp ${EFI_Firmware} ${Home}/bin/Firmware/${AutoBuild_Firmware}-UEFI.${Firmware_sfx}
+				touch bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
+				echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > bin/Firmware/${AutoBuild_Firmware}-UEFI.detail
+				cp ${EFI_Firmware} bin/Firmware/${AutoBuild_Firmware}-UEFI.${Firmware_sfx}
 				echo "UEFI Firmware is detected !"
 			fi
 		fi
 	;;
 	*)
-		cd ${Home}
 		Default_Firmware="${Up_Firmware}"
 		AutoBuild_Firmware="${COMP1}-${Openwrt_Version}.${Firmware_sfx}"
 		AutoBuild_Detail="${COMP1}-${Openwrt_Version}.detail"
@@ -195,7 +192,6 @@ Diy_Part3() {
 		echo -e "\nMD5:${_MD5}\nSHA256:${_SHA256}" > bin/Firmware/${AutoBuild_Detail}
 	;;
 	esac
-	cd ${Home}
 	echo "Actions Avaliable: $(df -h | grep "/dev/root" | awk '{printf $4}')"
 }
 Mkdir() {
