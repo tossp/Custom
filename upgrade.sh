@@ -8,17 +8,19 @@ GET_TARGET_INFO() {
 	echo "Home Path: ${Home}"
 	[ -f ${GITHUB_WORKSPACE}/Openwrt.info ] && . ${GITHUB_WORKSPACE}/Openwrt.info
 	Openwrt_Version="${Lede_Version}-${Compile_Date}"
-	x86_Test="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/CONFIG_TARGET_(.*)_DEVICE_(.*)=y/\1/')"
-	if [[ "${x86_Test}" == "x86-64" ]];then
+	TARGET_BOARD="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
+	TARGET_SUBTARGET="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
+	if [[ "${TARGET_BOARD}" == "x86" ]];then
 		TARGET_PROFILE="x86-64"
 	else
 		TARGET_PROFILE="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
 	fi
 	[[ -z "${TARGET_PROFILE}" ]] && TARGET_PROFILE="${Default_Device}"
+	
 	case "${TARGET_PROFILE}" in
 	x86-64)
-		grep "CONFIG_TARGET_IMAGES_GZIP" ${Home}/.config
-		if [[ ! $? -ne 0 ]];then
+		GZIP="$(grep "CONFIG_TARGET_IMAGES_GZIP" ${Home}/.config)"
+		if [[ "${GZIP}" == "CONFIG_TARGET_IMAGES_GZIP=y" ]];then
 			Firmware_sfx="img.gz"
 		else
 			Firmware_sfx="img"
@@ -28,8 +30,6 @@ GET_TARGET_INFO() {
 		Firmware_sfx="bin"
 	;;
 	esac
-	TARGET_BOARD="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
-	TARGET_SUBTARGET="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
 	Github_Repo="$(grep "https://github.com/[a-zA-Z0-9]" ${GITHUB_WORKSPACE}/.git/config | cut -c8-100)"
 	AutoBuild_Info=${GITHUB_WORKSPACE}/openwrt/package/base-files/files/etc/openwrt_info
 }
