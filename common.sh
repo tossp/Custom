@@ -156,8 +156,25 @@ elif [[ ${Modelfile} =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
 else
 	TARGET_PRO="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
 fi
+case "${REPO_URL}" in
+https://github.com/coolsnowwolf/lede)
+	COMP1="openwrt"
+	COMP2="lede"
+;;
+"https://github.com/Lienol/openwrt") 
+	COMP1="openwrt"
+	COMP2="lienol"
+;;
+"https://github.com/immortalwrt/immortalwrt") 
+	COMP1="immortalwrt"
+	COMP2="project"
+;;
+esac
+BANBEN1="$(awk 'NR==1' package/base-files/files/etc/openwrt_info)"
+AutoUpdate_Version=$(awk 'NR==6' package/base-files/files/bin/AutoUpdate.sh | awk -F '[="]+' '/Version/{print $2}')
 [[ -z "${TARGET_PRO}" ]] && TARGET_PRO="Unknown"
-echo "编译源码: ${Source}"
+echo ""
+echo "编译源码: ${COMP2}"
 echo "源码链接: ${REPO_URL}"
 echo "源码分支: ${REPO_BRANCH}"
 echo "源码作者: ${ZUOZHE}"
@@ -195,11 +212,14 @@ else
 	echo "微信通知: 关闭"
 fi
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
+	echo ""
 	echo "把定时自动更新插件编译进固件: 开启"
-	echo "定时更新固件版本：《${BANBEN}》"
+	echo "插件版本: ${AutoUpdate_Version}"
+	echo "《您现在编译的固件版本：${BANBEN1}》"
 	echo "《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布云端地址》"
 	echo "《x86-64、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置了》"
 	echo "《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
+	echo ""
 else	
 	echo "把定时自动更新插件编译进固件: 关闭"
 fi
