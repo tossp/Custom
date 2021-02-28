@@ -7,7 +7,6 @@ GET_TARGET_INFO() {
 	Home=${GITHUB_WORKSPACE}/openwrt
 	echo "Home Path: ${Home}"
 	[ -f ${GITHUB_WORKSPACE}/Openwrt.info ] && . ${GITHUB_WORKSPACE}/Openwrt.info
-	Openwrt_Version="${Lede_Version}-${Compile_Date}"
 	TARGET_BOARD="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
 	TARGET_SUBTARGET="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
 	if [[ "${TARGET_BOARD}" == "x86" ]];then
