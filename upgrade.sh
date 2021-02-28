@@ -44,7 +44,14 @@ GET_TARGET_INFO() {
 	Openwrt_Version="${COMP2}-${TARGET_PROFILE}-${Compile_Date}"
 }
 
-Diy_Part2_Base() {
+Diy_Part1() {
+	sed -i '/luci-app-autoupdate/d' .config > /dev/null 2>&1
+	echo -e "\nCONFIG_PACKAGE_luci-app-autoupdate=y" >> .config
+	sed -i '/luci-app-ttyd/d' .config > /dev/null 2>&1
+	echo -e "\nCONFIG_PACKAGE_luci-app-ttyd=y" >> .config
+}
+
+Diy_Part2() {
 	GET_TARGET_INFO
 	AutoUpdate_Version=$(awk 'NR==6' package/base-files/files/bin/AutoUpdate.sh | awk -F '[="]+' '/Version/{print $2}')
 	[[ -z "${AutoUpdate_Version}" ]] && AutoUpdate_Version="Unknown"
@@ -64,7 +71,7 @@ Diy_Part2_Base() {
 	
 }
 
-Diy_Part3_Base() {
+Diy_Part3() {
 	GET_TARGET_INFO
 	Firmware_Path="bin/targets/${TARGET_BOARD}/${TARGET_SUBTARGET}"
 	Mkdir bin/Firmware
