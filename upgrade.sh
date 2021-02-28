@@ -17,6 +17,16 @@ GET_TARGET_INFO() {
 	fi
 	[[ -z "${TARGET_PROFILE}" ]] && TARGET_PROFILE="${Default_Device}"
 	
+	if [[ "${REPO_URL}" == "https://github.com/coolsnowwolf/lede" ]];then
+		COMP1="openwrt"
+		COMP2="lede"
+	elif [[ "${REPO_URL}" == "https://github.com/Lienol/openwrt" ]];then
+		COMP1="openwrt"
+		COMP2="lienol"
+	elif [[ "${REPO_URL}" == "https://github.com/immortalwrt/immortalwrt" ]];then
+		COMP1="immortalwrt"
+		COMP2="project"
+	fi
 	case "${TARGET_PROFILE}" in
 	x86-64)
 		GZIP="$(grep "CONFIG_TARGET_IMAGES_GZIP" ${Home}/.config)"
@@ -32,6 +42,7 @@ GET_TARGET_INFO() {
 	esac
 	Github_Repo="$(grep "https://github.com/[a-zA-Z0-9]" ${GITHUB_WORKSPACE}/.git/config | cut -c8-100)"
 	AutoBuild_Info=${GITHUB_WORKSPACE}/openwrt/package/base-files/files/etc/openwrt_info
+	Openwrt_Version="${COMP2}-${TARGET_PROFILE}-${Compile_Date}"
 }
 
 Diy_Part2_Base() {
@@ -49,6 +60,8 @@ Diy_Part2_Base() {
 	echo "Firmware Type: ${Firmware_sfx}"
 	echo "Writting Type: ${Firmware_sfx} to ${AutoBuild_Info} ..."
 	echo "${Firmware_sfx}" >> ${AutoBuild_Info}
+	echo "${COMP1}" >> ${AutoBuild_Info}
+	echo "${COMP2}" >> ${AutoBuild_Info}
 	
 }
 
@@ -57,11 +70,11 @@ Diy_Part3_Base() {
 	Firmware_Path="bin/targets/${TARGET_BOARD}/${TARGET_SUBTARGET}"
 	Mkdir bin/Firmware
 	case "${TARGET_PROFILE}" in
-	x86_64)
+	x86-64)
 		cd ${Firmware_Path}
 		Legacy_Firmware=openwrt-${TARGET_BOARD}-${TARGET_SUBTARGET}-generic-squashfs-combined.${Firmware_sfx}
 		EFI_Firmware=openwrt-${TARGET_BOARD}-${TARGET_SUBTARGET}-generic-squashfs-combined-efi.${Firmware_sfx}
-		AutoBuild_Firmware="AutoBuild-${TARGET_PROFILE}-${Openwrt_Version}"
+		AutoBuild_Firmware="${COMP1}-${Openwrt_Version}"
 		if [ -f "${Legacy_Firmware}" ];then
 			_MD5=$(md5sum ${Legacy_Firmware} | cut -d ' ' -f1)
 			_SHA256=$(sha256sum ${Legacy_Firmware} | cut -d ' ' -f1)
@@ -83,7 +96,7 @@ Diy_Part3_Base() {
 		cd ${Home}
 		Default_Firmware="openwrt-${TARGET_BOARD}-${TARGET_SUBTARGET}-${TARGET_PROFILE}-squashfs-sysupgrade.${Firmware_sfx}"
 		AutoBuild_Firmware="AutoBuild-${TARGET_PROFILE}-${Openwrt_Version}.${Firmware_sfx}"
-		AutoBuild_Detail="AutoBuild-${TARGET_PROFILE}-${Openwrt_Version}.detail"
+		AutoBuild_Detail="${COMP1}-${Openwrt_Version}.detail"
 		echo "Firmware: ${AutoBuild_Firmware}"
 		mv -f ${Firmware_Path}/${Default_Firmware} bin/Firmware/${AutoBuild_Firmware}
 		_MD5=$(md5sum bin/Firmware/${AutoBuild_Firmware} | cut -d ' ' -f1)
