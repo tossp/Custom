@@ -4,8 +4,8 @@
 
 Diy_all() {
 echo "all"
-mv common/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
-chmod +x package/base-files/files/bin/* ./
+svn co https://github.com/jerrykuku/luci-theme-argon/branches/18.06 package/luci-theme-argon
+svn co https://github.com/jerrykuku/luci-app-argon-config/trunk package/luci-app-argon-config
 }
 
 # 全脚本源码通用diy2.sh文件
@@ -29,19 +29,10 @@ mkdir -p files/usr/bin/AdGuardHome/data
 
 Diy_lede() {
 echo "LEDE源码自定义1"
-rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
+rm -rf ./package/lean/luci-theme-argon
 
-git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
+git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
 
-git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
-git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
-git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
-git clone https://github.com/vernesong/OpenClash package/danshui/luci-app-openclash
-git clone https://github.com/frainzy1477/luci-app-clash package/danshui/luci-app-clash
-git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
-
-find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
-find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
 }
 
 # LEDE源码通用diy2.sh文件（openwrt机型文件夹也使用）
@@ -61,22 +52,8 @@ echo "LEDE源码自定义2"
 
 Diy_lienol() {
 echo "LIENOL源码自定义1"
-rm -rf package/diy/luci-app-adguardhome
-rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
 
-git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
-svn co https://github.com/281677160/openwrt-package/branches/usb/AutoUpdate package/base-files/files/bin
-chmod +x package/base-files/files/bin/* ./
-
-git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
-git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
-git clone https://github.com/vernesong/OpenClash package/danshui/luci-app-openclash
-git clone https://github.com/frainzy1477/luci-app-clash package/danshui/luci-app-clash
-git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
-
-find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
-find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
 }
 
 # LIENOL源码通用diy2.sh文件（openwrt机型文件夹也使用）
@@ -96,15 +73,6 @@ echo "LIENOL源码自定义2"
 
 Diy_immortalwrt() {
 echo "天灵源码自定义1"
-rm -rf package/lienol/luci-app-timecontrol
-rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3,luci-app-adguardhome}
-rm -rf package/lean/{luci-theme-argon}
-
-git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
-svn co https://github.com/281677160/openwrt-package/branches/usb/AutoUpdate package/base-files/files/bin
-chmod +x package/base-files/files/bin/* ./
-
-git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
 
 }
 
@@ -138,10 +106,8 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 Diy_notice() {
 echo "#"
 echo "《公告内容》"
-echo "元宵佳节明月好"
-echo "安全出行要记好"
-echo "交通法规须遵守"
-echo "幸福安康样样好"
+echo "祝大家新年快乐、生活愉快！"
+echo "使用中有疑问的可以加入电报群，跟群友交流"
 echo "#"
 }
 
