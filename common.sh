@@ -120,6 +120,10 @@ echo "#"
 
 Diy_xinxi_Base() {
 GET_TARGET_INFO
+if [[ "${TARGET_PROFILE}" =~ (x86-64|phicomm-k3|xiaomi_mir3g|d-team_newifi-d2) ]]; then
+	Up_Firmware="自动适配"
+	Firmware_sfx="自动适配"
+fi
 echo "Home Path: ${Home}" > /dev/null 2>&1
 echo ""
 echo "编译源码: ${COMP2}"
@@ -163,18 +167,15 @@ echo ""
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo "把定时自动更新插件编译进固件: 开启"
 	echo "插件版本: ${${AutoUpdate_Version}}"
-	if [[ "${TARGET_PROFILE}" =~ (x86-64|phicomm-k3|xiaomi_mir3g|d-team_newifi-d2) ]]; then
-		echo "固件名称: 自动适配"
-		echo "固件后缀: 自动适配"
-	else
-		echo "固件名称: ${Up_Firmware}"
-		echo "固件后缀: ${Firmware_sfx}"
-	fi
+	echo "固件名称: ${Up_Firmware}"
+	echo "固件后缀: ${Firmware_sfx}"
 	echo "固件版本: ${Openwrt_Version}"
 	echo "《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布云端地址》"
 	echo "《x86-64、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置了》"
 	echo "《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
 	echo ""
+else
+	echo "把定时自动更新插件编译进固件: 关闭"
 fi
 echo "编译环境剩余空间"
 cd ../ && df -hT $PWD && cd openwrt
