@@ -24,7 +24,7 @@ GET_TARGET_INFO() {
 	;;
 	esac
 	case "${REPO_URL}" in
-	https://github.com/coolsnowwolf/lede)
+	"${LEDE}")
 		COMP1="openwrt"
 		COMP2="lede"
 		if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
@@ -42,7 +42,7 @@ GET_TARGET_INFO() {
 			Firmware_sfx="${Extension}"
 		fi
 	;;
-	"https://github.com/Lienol/openwrt") 
+	"${LIENOL}") 
 		COMP1="openwrt"
 		COMP2="lienol"
 		if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
@@ -60,7 +60,7 @@ GET_TARGET_INFO() {
 			Firmware_sfx="${Extension}"
 		fi
 	;;
-	"https://github.com/immortalwrt/immortalwrt")
+	"${PROJECT}")
 		COMP1="immortalwrt"
 		COMP2="project"
 		if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
