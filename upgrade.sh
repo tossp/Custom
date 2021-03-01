@@ -4,7 +4,6 @@
 # AutoBuild Functions
 
 GET_TARGET_INFO() {
-	Home=${GITHUB_WORKSPACE}/openwrt
 	[ -f ${GITHUB_WORKSPACE}/Openwrt.info ] && . ${GITHUB_WORKSPACE}/Openwrt.info
 	TARGET_BOARD="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
 	TARGET_SUBTARGET="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
@@ -93,7 +92,6 @@ Diy_Part1() {
 
 Diy_Part2() {
 	GET_TARGET_INFO
-	AutoBuild_Info=${GITHUB_WORKSPACE}/openwrt/package/base-files/files/etc/openwrt_info
 	[[ -z "${AutoUpdate_Version}" ]] && AutoUpdate_Version="Unknown"
 	[[ -z "${Author}" ]] && Author="Unknown"
 	echo "Home Path: ${Home}"
@@ -101,14 +99,14 @@ Diy_Part2() {
 	echo "Openwrt Version: ${Openwrt_Version}"
 	echo "Router: ${TARGET_PROFILE}"
 	echo "Github: ${Github_Repo}"
-	echo "${Openwrt_Version}" > ${AutoBuild_Info}
-	echo "${Github_Repo}" >> ${AutoBuild_Info}
-	echo "${TARGET_PROFILE}" >> ${AutoBuild_Info}
+	echo "${Openwrt_Version}" > ${Home}/package/base-files/files/etc/openwrt_info
+	echo "${Github_Repo}" >> ${Home}/package/base-files/files/etc/openwrt_info
+	echo "${TARGET_PROFILE}" >> ${Home}/package/base-files/files/etc/openwrt_info
 	echo "Firmware Type: ${Firmware_sfx}"
-	echo "Writting Type: ${Firmware_sfx} to ${AutoBuild_Info} ..."
-	echo "${Firmware_sfx}" >> ${AutoBuild_Info}
-	echo "${COMP1}" >> ${AutoBuild_Info}
-	echo "${COMP2}" >> ${AutoBuild_Info}
+	echo "Writting Type: ${Firmware_sfx} to ${Home}/package/base-files/files/etc/openwrt_info ..."
+	echo "${Firmware_sfx}" >> ${Home}/package/base-files/files/etc/openwrt_info
+	echo "${COMP1}" >> ${Home}/package/base-files/files/etc/openwrt_info
+	echo "${COMP2}" >> ${Home}/package/base-files/files/etc/openwrt_info
 	
 }
 
