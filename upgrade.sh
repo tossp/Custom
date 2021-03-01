@@ -79,6 +79,7 @@ GET_TARGET_INFO() {
 		fi
 	;;
 	esac
+	AutoUpdate_Version=$(awk 'NR==6' package/base-files/files/bin/AutoUpdate.sh | awk -F '[="]+' '/Version/{print $2}')
 	Github_Repo="$(grep "https://github.com/[a-zA-Z0-9]" ${GITHUB_WORKSPACE}/.git/config | cut -c8-100)"
 	AutoBuild_Info=${GITHUB_WORKSPACE}/openwrt/package/base-files/files/etc/openwrt_info
 	Openwrt_Version="${COMP2}-${TARGET_PROFILE}-${Compile_Date}"
@@ -93,7 +94,6 @@ Diy_Part1() {
 
 Diy_Part2() {
 	GET_TARGET_INFO
-	AutoUpdate_Version=$(awk 'NR==6' package/base-files/files/bin/AutoUpdate.sh | awk -F '[="]+' '/Version/{print $2}')
 	[[ -z "${AutoUpdate_Version}" ]] && AutoUpdate_Version="Unknown"
 	[[ -z "${Author}" ]] && Author="Unknown"
 	echo "Author: ${Author}"
