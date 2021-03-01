@@ -119,6 +119,7 @@ echo "#"
 
 
 Diy_xinxi_Base() {
+GET_TARGET_INFO
 DEVICES="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
 SUBTARGETS="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
 if [[ "${DEVICES}" == "x86" ]]; then
