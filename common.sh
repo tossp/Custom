@@ -175,7 +175,7 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo "《x86-64、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置了》"
 	echo "《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
 	echo ""
-else	
+elif [[ ${REGULAR_UPDATE} != "true" ]]; then	
 	echo "把定时自动更新插件编译进固件: 关闭"
 fi
 echo "编译环境剩余空间"
