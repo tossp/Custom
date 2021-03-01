@@ -146,6 +146,7 @@ esac
 BANBEN1="$(awk 'NR==1' package/base-files/files/etc/openwrt_info)"
 AutoUpdate_Version=$(awk 'NR==6' package/base-files/files/bin/AutoUpdate.sh | awk -F '[="]+' '/Version/{print $2}')
 [[ -z "${TARGET_PRO}" ]] && TARGET_PRO="Unknown"
+-echo "Home Path: ${Home}"
 echo ""
 echo "Openwrt Version: ${Openwrt_Version}"
 echo "编译源码: ${COMP2}"
