@@ -32,14 +32,14 @@ GET_TARGET_INFO() {
 		COMP2="lede"
 		if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
 			Up_Firmware="openwrt-x86-64-generic-squashfs-combined.${Firmware_sfxo}"
-			EFI_Firmware="openwrt-x86-64-generic-squashfs-combined-efi.${Firmware_sfxo}"
+			EFI_Up_Firmware="openwrt-x86-64-generic-squashfs-combined-efi.${Firmware_sfxo}"
 			Firmware_sfx="${Firmware_sfxo}"
 		elif [[ "${TARGET_PROFILE}" == "phicomm-k3" ]]; then
 			Up_Firmware="openwrt-bcm53xx-generic-phicomm-k3-squashfs.trx"
-			Firmware_sfx=".trx"
+			Firmware_sfx="trx"
 		elif [[ "${TARGET_PROFILE}" =~ (xiaomi_mir3g|d-team_newifi-d2) ]]; then
 			Up_Firmware="openwrt-${TARGET1}-${TARGET2}-${TARGET3}-squashfs-sysupgrade.bin"
-			Firmware_sfx=".bin"
+			Firmware_sfx="bin"
 		else
 			Up_Firmware="${Updete_firmware}"
 			Firmware_sfx="${Extension}"
@@ -49,14 +49,14 @@ GET_TARGET_INFO() {
 		COMP2="lienol"
 		if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
 			Up_Firmware="openwrt-x86-64-combined-squashfs.${Firmware_sfxo}"
-			EFI_Firmware="openwrt-x86-64-combined-squashfs-efi.${Firmware_sfxo}"
+			EFI_Up_Firmware="openwrt-x86-64-combined-squashfs-efi.${Firmware_sfxo}"
 			Firmware_sfx="${Firmware_sfxo}"
 		elif [[ "${TARGET_PROFILE}" == "phicomm-k3" ]]; then
 			Up_Firmware="openwrt-bcm53xx-phicomm-k3-squashfs.trx"
-			Firmware_sfx=".trx"
+			Firmware_sfx="trx"
 		elif [[ "${TARGET_PROFILE}" =~ (xiaomi_mir3g|d-team_newifi-d2) ]]; then
 			Up_Firmware="openwrt-${TARGET1}-${TARGET2}-${TARGET3}-squashfs-sysupgrade.bin"
-			Firmware_sfx=".bin"
+			Firmware_sfx="bin"
 		else
 			Up_Firmware="${Updete_firmware}"
 			Firmware_sfx="${Extension}"
@@ -66,14 +66,14 @@ GET_TARGET_INFO() {
 		COMP2="project"
 		if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
 			Up_Firmware="immortalwrt-x86-64-combined-squashfs.${Firmware_sfxo}"
-			EFI_Firmware="immortalwrt-x86-64-uefi-gpt-squashfs.${Firmware_sfxo}"
+			EFI_Up_Firmware="immortalwrt-x86-64-uefi-gpt-squashfs.${Firmware_sfxo}"
 			Firmware_sfx="${Firmware_sfxo}"
 		elif [[ "${TARGET_PROFILE}" == "phicomm-k3" ]]; then
 			Up_Firmware="immortalwrt-bcm53xx-phicomm-k3-squashfs.trx"
-			Firmware_sfx=".trx"
+			Firmware_sfx="trx"
 		elif [[ "${TARGET_PROFILE}" =~ (xiaomi_mir3g|d-team_newifi-d2) ]]; then
 			Up_Firmware="immortalwrt-${TARGET1}-${TARGET2}-${TARGET3}-squashfs-sysupgrade.bin"
-			Firmware_sfx=".bin"
+			Firmware_sfx="bin"
 		else
 			Up_Firmware="${Updete_firmware}"
 			Firmware_sfx="${Extension}"
@@ -120,7 +120,7 @@ Diy_Part3() {
 	x86-64)
 		cd ${Firmware_Path}
 		Legacy_Firmware="${Up_Firmware}"
-		EFI_Firmware="${EFI_Firmware}"
+		EFI_Firmware="${EFI_Up_Firmware}"
 		AutoBuild_Firmware="${COMP1}-${Openwrt_Version}"
 		if [ -f "${Legacy_Firmware}" ];then
 			_MD5=$(md5sum ${Legacy_Firmware} | cut -d ' ' -f1)
