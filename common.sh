@@ -120,7 +120,7 @@ echo "#"
 
 Diy_xinxi_Base() {
 GET_TARGET_INFO
-# echo "Home Path: ${Home}"
+echo "Home Path: ${Home}" > /dev/null 2>&1
 echo ""
 echo "编译源码: ${COMP2}"
 echo "源码链接: ${REPO_URL}"
