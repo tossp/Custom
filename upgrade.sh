@@ -99,10 +99,10 @@ Diy_Part2() {
 	echo "Openwrt Version: ${Openwrt_Version}"
 	echo "Router: ${TARGET_PROFILE}"
 	echo "Github: ${Github_Repo}"
+	echo "Firmware Type: ${Firmware_sfx}"
 	echo "${Openwrt_Version}" > ${Home}/package/base-files/files/etc/openwrt_info
 	echo "${Github_Repo}" >> ${Home}/package/base-files/files/etc/openwrt_info
 	echo "${TARGET_PROFILE}" >> ${Home}/package/base-files/files/etc/openwrt_info
-	echo "Firmware Type: ${Firmware_sfx}"
 	echo "${Firmware_sfx}" >> ${Home}/package/base-files/files/etc/openwrt_info
 	echo "${COMP1}" >> ${Home}/package/base-files/files/etc/openwrt_info
 	echo "${COMP2}" >> ${Home}/package/base-files/files/etc/openwrt_info
