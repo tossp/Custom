@@ -163,6 +163,13 @@ echo ""
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo "把定时自动更新插件编译进固件: 开启"
 	echo "插件版本: ${${AutoUpdate_Version}}"
+	[[ "${TARGET_PROFILE}" =~ (x86-64|phicomm-k3|xiaomi_mir3g|d-team_newifi-d2) ]]; then
+		echo "固件名称: 已自动适配"
+		echo "固件后缀: 已自动适配"
+	else
+		echo "固件名称: ${Up_Firmware}"
+		echo "固件后缀: ${Firmware_sfx}"
+	fi
 	echo "固件版本: ${Openwrt_Version}"
 	echo "《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布云端地址》"
 	echo "《x86-64、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置了》"
