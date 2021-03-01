@@ -124,7 +124,6 @@ if [[ "${TARGET_PROFILE}" =~ (x86-64|phicomm-k3|xiaomi_mir3g|d-team_newifi-d2) ]
 	Up_Firmware="自动适配"
 	Firmware_sfx="自动适配"
 fi
-echo "Home Path: ${Home}" > /dev/null 2>&1
 echo ""
 echo "编译源码: ${COMP2}"
 echo "源码链接: ${REPO_URL}"
@@ -166,7 +165,7 @@ fi
 echo ""
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo "把定时自动更新插件编译进固件: 开启"
-	echo "插件版本: ${${AutoUpdate_Version}}"
+	echo "插件版本: ${AutoUpdate_Version}"
 	echo "固件名称: ${Up_Firmware}"
 	echo "固件后缀: ${Firmware_sfx}"
 	echo "固件版本: ${Openwrt_Version}"
