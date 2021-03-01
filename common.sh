@@ -135,7 +135,6 @@ echo "源码作者: ${ZUOZHE}"
 echo "机子型号: ${TARGET_PROFILE}"
 echo "固件作者: ${Author}"
 echo "仓库链接: ${Github_Repo}"
-echo "发布路径: ${GITHUB_REL}/release"
 if [[ ${UPLOAD_BIN_DIR} == "true" ]]; then
 	echo "上传BIN文件夹(固件+IPK): 开启"
 else
@@ -173,6 +172,7 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo "固件名称: ${Firmware_mz}"
 	echo "固件后缀: ${Firmware_hz}"
 	echo "固件版本: ${Openwrt_Version}"
+	echo "云端路径: ${GITHUB_REL}/releases/update_Firmware"
 	echo "《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布云端地址》"
 	echo "《x86-64、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置了》"
 	echo "《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
