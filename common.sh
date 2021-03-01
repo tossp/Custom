@@ -196,5 +196,5 @@ else
 	echo "把定时自动更新插件编译进固件: 关闭"
 fi
 echo "编译环境剩余空间"
-cd ../ && df -hT $PWD cd openwrt
+cd ../ && df -hT $PWD && cd openwrt
 }
