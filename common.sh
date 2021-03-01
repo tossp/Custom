@@ -34,7 +34,7 @@ mkdir -p files/usr/bin/AdGuardHome/data
 
 Diy_lede() {
 echo "LEDE源码自定义1"
-cd ../ && cp -Rf common/LEDE/* $LUJING && cd openwrt
+cp -Rf build/common/LEDE/* $LUJING
 rm -rf package/lean/luci-theme-argon
 
 git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
