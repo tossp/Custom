@@ -120,9 +120,11 @@ echo "#"
 
 Diy_xinxi_Base() {
 GET_TARGET_INFO
+Firmware_mz="${Up_Firmware}"
+Firmware_hz="${Firmware_sfx}"
 if [[ "${TARGET_PROFILE}" =~ (x86-64|phicomm-k3|xiaomi_mir3g|d-team_newifi-d2) ]]; then
-	Up_Firmware="自动适配"
-	Firmware_sfx="自动适配"
+	Firmware_mz="自动适配"
+	Firmware_hz="自动适配"
 fi
 echo ""
 echo "编译源码: ${COMP2}"
@@ -166,8 +168,8 @@ echo ""
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo "把定时自动更新插件编译进固件: 开启"
 	echo "插件版本: ${AutoUpdate_Version}"
-	echo "固件名称: ${Up_Firmware}"
-	echo "固件后缀: ${Firmware_sfx}"
+	echo "固件名称: ${Firmware_mz}"
+	echo "固件后缀: ${Firmware_hz}"
 	echo "固件版本: ${Openwrt_Version}"
 	echo "《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布云端地址》"
 	echo "《x86-64、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置了》"
