@@ -23,9 +23,8 @@ GET_TARGET_INFO() {
 		fi
 	;;
 	esac
-	
-	
-	if [[ "${REPO_URL}" == "https://github.com/coolsnowwolf/lede" ]];then
+	case "${REPO_URL}" in
+	https://github.com/coolsnowwolf/lede)
 		COMP1="openwrt"
 		COMP2="lede"
 		if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
@@ -42,7 +41,8 @@ GET_TARGET_INFO() {
 			Up_Firmware="${Updete_firmware}"
 			Firmware_sfx="${Extension}"
 		fi
-	elif [[ "${REPO_URL}" == "https://github.com/Lienol/openwrt" ]];then
+	;;
+	"https://github.com/Lienol/openwrt") 
 		COMP1="openwrt"
 		COMP2="lienol"
 		if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
@@ -59,7 +59,8 @@ GET_TARGET_INFO() {
 			Up_Firmware="${Updete_firmware}"
 			Firmware_sfx="${Extension}"
 		fi
-	elif [[ "${REPO_URL}" == "https://github.com/immortalwrt/immortalwrt" ]];then
+	;;
+	"https://github.com/immortalwrt/immortalwrt")
 		COMP1="immortalwrt"
 		COMP2="project"
 		if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
@@ -76,7 +77,8 @@ GET_TARGET_INFO() {
 			Up_Firmware="${Updete_firmware}"
 			Firmware_sfx="${Extension}"
 		fi
-	fi
+	;;
+	esac
 	Github_Repo="$(grep "https://github.com/[a-zA-Z0-9]" ${GITHUB_WORKSPACE}/.git/config | cut -c8-100)"
 	AutoBuild_Info=${GITHUB_WORKSPACE}/openwrt/package/base-files/files/etc/openwrt_info
 	Openwrt_Version="${COMP2}-${TARGET_PROFILE}-${Compile_Date}"
