@@ -118,8 +118,7 @@ echo "#"
 }
 
 
-Diy_xinxi_Base() {
-GET_TARGET_INFO
+Diy_xinxi() {
 echo ""
 echo "编译源码: ${COMP2}"
 echo "源码链接: ${REPO_URL}"
