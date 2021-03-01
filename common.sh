@@ -120,7 +120,7 @@ echo "#"
 
 Diy_xinxi_Base() {
 GET_TARGET_INFO
-if [[ "${TARGET_PROFILE}" =~ (x86-64|phicomm-k3|xiaomi_mir3g|d-team_newifi-d2) ]]; then
+if [[ "${TARGET_PROFILE}" =~ (x86-64|phicomm-k3|xiaomi_mir3g|d-team_newifi-d2|phicomm_k2p|k2p) ]]; then
 	Firmware_mz="自动适配"
 	Firmware_hz="自动适配"
 else
