@@ -103,7 +103,6 @@ Diy_Part2() {
 	echo "${Github_Repo}" >> ${Home}/package/base-files/files/etc/openwrt_info
 	echo "${TARGET_PROFILE}" >> ${Home}/package/base-files/files/etc/openwrt_info
 	echo "Firmware Type: ${Firmware_sfx}"
-	echo "Writting Type: ${Firmware_sfx} to ${Home}/package/base-files/files/etc/openwrt_info ..."
 	echo "${Firmware_sfx}" >> ${Home}/package/base-files/files/etc/openwrt_info
 	echo "${COMP1}" >> ${Home}/package/base-files/files/etc/openwrt_info
 	echo "${COMP2}" >> ${Home}/package/base-files/files/etc/openwrt_info
