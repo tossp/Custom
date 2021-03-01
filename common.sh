@@ -135,7 +135,7 @@ echo "源码作者: ${ZUOZHE}"
 echo "机子型号: ${TARGET_PROFILE}"
 echo "固件作者: ${Author}"
 echo "仓库链接: ${Github_Repo}"
-echo "发布路径: ${GITHUB_RELEASE}"
+echo "发布路径: ${GITHUB_REL}/release"
 if [[ ${UPLOAD_BIN_DIR} == "true" ]]; then
 	echo "上传BIN文件夹(固件+IPK): 开启"
 else
