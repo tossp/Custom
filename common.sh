@@ -5,7 +5,6 @@
 
 Diy_all() {
 echo "all"
-LUJING="${GITHUB_WORKSPACE}/openwrt/build/${Modelfile}"
 git clone https://github.com/281677160/luci-app-autoupdate package/luci-app-autoupdate
 mv build/${Modelfile}/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
 chmod -R +x package/base-files/files/bin
@@ -34,7 +33,7 @@ mkdir -p files/usr/bin/AdGuardHome/data
 
 Diy_lede() {
 echo "LEDE源码自定义1"
-cp -Rf build/common/LEDE/* $LUJING
+cp -Rf build/common/LEDE/* ${PATH1}
 rm -rf package/lean/luci-theme-argon
 
 git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
