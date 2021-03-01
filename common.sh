@@ -120,42 +120,15 @@ echo "#"
 
 Diy_xinxi_Base() {
 GET_TARGET_INFO
-DEVICES="$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)"
-SUBTARGETS="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
-if [[ "${DEVICES}" == "x86" ]]; then
-	TARGET_PRO="x86-${SUBTARGETS}"
-elif [[ ${Modelfile} =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
-	TARGET_PRO="n1,Vplus,Beikeyun,L1Pro,S9xxx"
-else
-	TARGET_PRO="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
-fi
-case "${REPO_URL}" in
-https://github.com/coolsnowwolf/lede)
-	COMP1="openwrt"
-	COMP2="lede"
-;;
-"https://github.com/Lienol/openwrt") 
-	COMP1="openwrt"
-	COMP2="lienol"
-;;
-"https://github.com/immortalwrt/immortalwrt") 
-	COMP1="immortalwrt"
-	COMP2="project"
-;;
-esac
-BANBEN1="$(awk 'NR==1' package/base-files/files/etc/openwrt_info)"
-AutoUpdate_Version=$(awk 'NR==6' package/base-files/files/bin/AutoUpdate.sh | awk -F '[="]+' '/Version/{print $2}')
-[[ -z "${TARGET_PRO}" ]] && TARGET_PRO="Unknown"
 -echo "Home Path: ${Home}"
 echo ""
-echo "Openwrt Version: ${Openwrt_Version}"
 echo "编译源码: ${COMP2}"
 echo "源码链接: ${REPO_URL}"
 echo "源码分支: ${REPO_BRANCH}"
 echo "源码作者: ${ZUOZHE}"
-echo "机子型号: ${TARGET_PRO}"
+echo "机子型号: ${TARGET_PROFILE}"
 echo "固件作者: ${Author}"
-echo "仓库链接: ${GITHUB_REL}"
+echo "仓库链接: ${Github_Repo}"
 if [[ ${UPLOAD_BIN_DIR} == "true" ]]; then
 	echo "上传BIN文件夹(固件+IPK): 开启"
 else
@@ -189,8 +162,8 @@ fi
 echo ""
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo "把定时自动更新插件编译进固件: 开启"
-	echo "插件版本: ${AutoUpdate_Version}"
-	echo "《您现在编译的固件版本：${BANBEN1}》"
+	echo "插件版本: ${${AutoUpdate_Version}}"
+	echo "固件版本: ${Openwrt_Version}"
 	echo "《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布云端地址》"
 	echo "《x86-64、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置了》"
 	echo "《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
