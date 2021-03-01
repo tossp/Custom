@@ -122,3 +122,8 @@ Mkdir() {
 	fi
 	unset _DIR
 }
+
+Diy_xinxi() {
+	GET_TARGET_INFO
+	Diy_xinxi_Base
+}
