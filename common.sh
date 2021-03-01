@@ -168,7 +168,6 @@ fi
 echo ""
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo "把定时自动更新插件编译进固件: 开启"
-	echo "插件版本: ${AutoUpdate_Version}"
 	echo "固件名称: ${Firmware_mz}"
 	echo "固件后缀: ${Firmware_hz}"
 	echo "固件版本: ${Openwrt_Version}"
