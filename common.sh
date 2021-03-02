@@ -111,8 +111,8 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 Diy_notice() {
 echo ""
 echo "	《公告内容》"
-echo "祝大家新年快乐、生活愉快！"
-echo "使用中有疑问的可以加入电报群，跟群友交流"
+echo " 祝大家新年快乐、生活愉快！"
+echo " 使用中有疑问的可以加入电报群，跟群友交流"
 echo ""
 }
 
@@ -120,11 +120,11 @@ echo ""
 Diy_xinxi_Base() {
 GET_TARGET_INFO
 if [[ "${TARGET_PROFILE}" =~ (x86-64|phicomm-k3|xiaomi_mir3g|d-team_newifi-d2|phicomm_k2p|k2p) ]]; then
-	Firmware_mz="自动适配"
-	Firmware_hz="自动适配"
+	Firmware_mz=" 自动适配"
+	Firmware_hz=" 自动适配"
 else
-	Firmware_mz="${Up_Firmware}"
-	Firmware_hz="${Firmware_sfx}"
+	Firmware_mz=" ${Up_Firmware}"
+	Firmware_hz=" ${Firmware_sfx}"
 fi
 echo ""
 echo " 编译源码: ${COMP2}"
@@ -183,7 +183,7 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo " 《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
 	echo ""
 else
-	echo "把定时自动更新插件编译进固件: 关闭"
+	echo " 把定时自动更新插件编译进固件: 关闭"
 fi
 echo " 系统空间      类型   总数  已用  可用 使用率"
 cd ../ && df -hT $PWD && cd openwrt
