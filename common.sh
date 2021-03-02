@@ -164,6 +164,11 @@ if [[ ${SERVERCHAN_SCKEY} == "true" ]]; then
 else
 	echo "微信通知: 关闭"
 fi
+if [[ ${SSH_ACTIONS} == "true" ]]; then
+	echo "SSH远程连接: 开启"
+else
+	echo "SH远程连接: 关闭"
+fi
 echo ""
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo "把定时自动更新插件编译进固件: 开启"
