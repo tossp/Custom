@@ -127,60 +127,60 @@ else
 	Firmware_hz="${Firmware_sfx}"
 fi
 echo ""
-echo "编译源码: ${COMP2}"
-echo "源码链接: ${REPO_URL}"
-echo "源码分支: ${REPO_BRANCH}"
-echo "源码作者: ${ZUOZHE}"
-echo "编译机型: ${TARGET_PROFILE}"
-echo "固件作者: ${Author}"
-echo "仓库地址: ${Github_Repo}"
+echo " 编译源码: ${COMP2}"
+echo " 源码链接: ${REPO_URL}"
+echo " 源码分支: ${REPO_BRANCH}"
+echo " 源码作者: ${ZUOZHE}"
+echo " 编译机型: ${TARGET_PROFILE}"
+echo " 固件作者: ${Author}"
+echo " 仓库地址: ${Github_Repo}"
 if [[ ${UPLOAD_BIN_DIR} == "true" ]]; then
-	echo "上传BIN文件夹(固件+IPK): 开启"
+	echo " 上传BIN文件夹(固件+IPK): 开启"
 else
-	echo "上传BIN文件夹(固件+IPK): 关闭"
+	echo " 上传BIN文件夹(固件+IPK): 关闭"
 fi
 if [[ ${UPLOAD_CONFIG} == "true" ]]; then
-	echo "上传[.config]配置文件: 开启"
+	echo " 上传[.config]配置文件: 开启"
 else
-	echo "上传[.config]配置文件: 关闭"
+	echo " 上传[.config]配置文件: 关闭"
 fi
 if [[ ${UPLOAD_FIRMWARE} == "true" ]]; then
-	echo "上传固件在github空间: 开启"
+	echo " 上传固件在github空间: 开启"
 else
-	echo "上传固件在github空间: 关闭"
+	echo " 上传固件在github空间: 关闭"
 fi
 if [[ ${UPLOAD_COWTRANSFER} == "true" ]]; then
-	echo "上传固件到到【奶牛快传】和【WETRANSFER】: 开启"
+	echo " 上传固件到到【奶牛快传】和【WETRANSFER】: 开启"
 else
-	echo "上传固件到到【奶牛快传】和【WETRANSFER】: 关闭"
+	echo " 上传固件到到【奶牛快传】和【WETRANSFER】: 关闭"
 fi
 if [[ ${UPLOAD_RELEASE} == "true" ]]; then
-	echo "发布固件: 开启"
+	echo " 发布固件: 开启"
 else
-	echo "发布固件: 关闭"
+	echo " 发布固件: 关闭"
 fi
 if [[ ${SERVERCHAN_SCKEY} == "true" ]]; then
-	echo "微信通知: 开启"
+	echo " 微信通知: 开启"
 else
-	echo "微信通知: 关闭"
+	echo " 微信通知: 关闭"
 fi
 if [[ ${SSH_ACTIONS} == "true" ]]; then
-	echo "SSH远程连接: 开启"
+	echo " SSH远程连接: 开启"
 else
-	echo "SSH远程连接: 关闭"
+	echo " SSH远程连接: 关闭"
 fi
 echo ""
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
-	echo "把定时自动更新插件编译进固件: 开启"
-	echo "插件版本: ${AutoUpdate_Version}"
-	echo "固件名称: ${Firmware_mz}"
-	echo "固件后缀: ${Firmware_hz}"
-	echo "固件版本: ${Openwrt_Version}"
-	echo "云端路径: ${Github_Repo}/releases/update_Firmware"
-	echo "《编译成功，会自动把固件发布到指定地址，然后才会生成云端路径》"
-	echo "《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布云端地址》"
-	echo "《x86-64、phicomm_k2p、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置》"
-	echo "《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
+	echo " 把定时自动更新插件编译进固件: 开启"
+	echo " 插件版本: ${AutoUpdate_Version}"
+	echo " 固件名称: ${Firmware_mz}"
+	echo " 固件后缀: ${Firmware_hz}"
+	echo " 固件版本: ${Openwrt_Version}"
+	echo " 云端路径: ${Github_Repo}/releases/update_Firmware"
+	echo " 《编译成功，会自动把固件发布到指定地址，然后才会生成云端路径》"
+	echo " 《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布云端地址》"
+	echo " 《x86-64、phicomm_k2p、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置》"
+	echo " 《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
 	echo ""
 else
 	echo "把定时自动更新插件编译进固件: 关闭"
