@@ -109,11 +109,11 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 # 公告
 
 Diy_notice() {
-echo "#"
+echo ""
 echo "	《公告内容》"
 echo "祝大家新年快乐、生活愉快！"
 echo "使用中有疑问的可以加入电报群，跟群友交流"
-echo "#"
+echo ""
 }
 
 
