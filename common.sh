@@ -171,7 +171,7 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo "固件名称: ${Firmware_mz}"
 	echo "固件后缀: ${Firmware_hz}"
 	echo "固件版本: ${Openwrt_Version}"
-	echo "云端路径: ${GITHUB_REL}/releases/update_Firmware"
+	echo "云端路径: ${Github_Repo}/releases/update_Firmware"
 	echo "《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布云端地址》"
 	echo "《x86-64、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置了》"
 	echo "《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
