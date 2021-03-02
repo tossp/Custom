@@ -131,7 +131,7 @@ echo "编译源码: ${COMP2}"
 echo "源码链接: ${REPO_URL}"
 echo "源码分支: ${REPO_BRANCH}"
 echo "源码作者: ${ZUOZHE}"
-echo "机子型号: ${TARGET_PROFILE}"
+echo "编译机型: ${TARGET_PROFILE}"
 echo "固件作者: ${Author}"
 echo "仓库地址: ${Github_Repo}"
 if [[ ${UPLOAD_BIN_DIR} == "true" ]]; then
