@@ -185,6 +185,6 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 else
 	echo "把定时自动更新插件编译进固件: 关闭"
 fi
-echo "系统空间： 类型  总数  已用  可用  使用率"
+echo "系统空间      类型  总数  已用  可用  使用率"
 cd ../ && df -hT $PWD && cd openwrt
 }
