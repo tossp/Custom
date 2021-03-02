@@ -167,7 +167,7 @@ fi
 if [[ ${SSH_ACTIONS} == "true" ]]; then
 	echo "SSH远程连接: 开启"
 else
-	echo "SH远程连接: 关闭"
+	echo "SSH远程连接: 关闭"
 fi
 echo ""
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
