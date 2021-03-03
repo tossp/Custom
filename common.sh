@@ -169,8 +169,8 @@ if [[ ${SSH_ACTIONS} == "true" ]]; then
 else
 	echo " SSH远程连接: 关闭"
 fi
-echo ""
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
+	echo ""
 	echo " 把定时自动更新插件编译进固件: 开启"
 	echo " 插件版本: ${AutoUpdate_Version}"
 	echo " 固件名称: ${Firmware_mz}"
@@ -184,6 +184,7 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo ""
 else
 	echo " 把定时自动更新插件编译进固件: 关闭"
+	echo ""
 fi
 echo " 系统空间      类型   总数  已用  可用 使用率"
 cd ../ && df -hT $PWD && cd openwrt
