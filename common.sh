@@ -169,6 +169,8 @@ else
 fi
 if [[ ${SSH_ACTIONS} == "true" ]]; then
 	echo " SSH远程连接: 开启"
+elif [[ ${SSHYC} == "true" ]]; then
+	echo " SSH临时远程连接: 开启"
 else
 	echo " SSH远程连接: 关闭"
 fi
