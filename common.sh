@@ -126,6 +126,9 @@ else
 	Firmware_mz="${Up_Firmware}"
 	Firmware_hz="${Firmware_sfx}"
 fi
+if [[ ${{matrix.target}} =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
+	TARGET_PROFILE="N1,Vplus,Beikeyun,L1Pro,S9xxx"
+fi
 echo ""
 echo " 编译源码: ${COMP2}"
 echo " 源码链接: ${REPO_URL}"
