@@ -81,7 +81,7 @@ GET_TARGET_INFO() {
 	esac
 	AutoUpdate_Version=$(awk 'NR==6' package/base-files/files/bin/AutoUpdate.sh | awk -F '[="]+' '/Version/{print $2}')
 	Github_Repo="$(grep "https://github.com/[a-zA-Z0-9]" ${GITHUB_WORKSPACE}/.git/config | cut -c8-100)"
-	Github_UP_RELEASE="${GRELEASE}/releases/update_Firmware"
+	Github_UP_RELEASE="${GRELEASE}/update_Firmware"
 	AutoBuild_Info=${GITHUB_WORKSPACE}/openwrt/package/base-files/files/etc/openwrt_info
 	Openwrt_Version="${COMP2}-${TARGET_PROFILE}-${Compile_Date}"
 }
