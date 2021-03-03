@@ -35,8 +35,8 @@ Diy_lede() {
 echo "LEDE源码自定义1"
 cp -Rf build/common/LEDE/* "${PATH1}"
 if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
-sed -i '/IMAGES_GZIP/d' "${PATH1}/.config" > /dev/null 2>&1
-echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/.config"
+sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
+echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
 fi
 rm -rf package/lean/luci-theme-argon
 
