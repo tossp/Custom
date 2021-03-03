@@ -29,11 +29,15 @@ mkdir -p files/usr/bin/AdGuardHome/data
 ################################################################################################################
 
 
-# LEDE源码通用diy1.sh文件（除了openwrt机型文件夹）
+# LEDE源码通用diy1.sh文件
 
 Diy_lede() {
 echo "LEDE源码自定义1"
-cp -Rf build/common/LEDE/* ${PATH1}
+cp -Rf build/common/LEDE/* "${PATH1}"
+if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
+sed -i '/IMAGES_GZIP/d' "${PATH1}/.config" > /dev/null 2>&1
+echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/.config"
+fi
 rm -rf package/lean/luci-theme-argon
 
 git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
@@ -126,7 +130,7 @@ else
 	Firmware_mz="${Up_Firmware}"
 	Firmware_hz="${Firmware_sfx}"
 fi
-if [[ ${Modelfile} =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
+if [[ "${Modelfile}" =~ (Lede_phicomm_n1|Project_phicomm_n1) ]]; then
 	TARGET_PROFILE="N1,Vplus,Beikeyun,L1Pro,S9xxx"
 fi
 echo ""
