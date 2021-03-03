@@ -174,8 +174,6 @@ else
 fi
 if [[ ${SSHYC} == "true" ]]; then
 	echo " SSH远程临时开关: 开启"
-else
-	echo " SSH远程临时开关: 关闭"
 fi
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo ""
