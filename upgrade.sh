@@ -25,7 +25,7 @@ GET_TARGET_INFO() {
 	esac
 	case "${REPO_URL}" in
 	"${LEDE}")
-		COMP1="openwrt"
+		COMP1="coolsnowwolf"
 		COMP2="lede"
 		if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
 			Up_Firmware="openwrt-x86-64-generic-squashfs-combined.${Firmware_sfxo}"
