@@ -72,6 +72,9 @@ cp -Rf build/common/LIENOL/* "${PATH1}"
 git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
 rm -rf package/diy/luci-app-adguardhome
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
+if [[ "${Modelfile}" == "Project_nanopi_r4s" ]]; then
+curl -fsSL https://raw.githubusercontent.com/1715173329/nanopi-r4s-openwrt/master/patches/1806-modify_for_r4s.patch > ./"${PATH1}/patches"/1806-modify_for_r4s.patch
+fi
 
 git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
