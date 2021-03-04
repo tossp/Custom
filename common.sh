@@ -35,10 +35,6 @@ echo "LEDE源码自定义1"
 cp -Rf build/common/LEDE/* "${PATH1}"
 git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
-if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
-sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
-echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
-fi
 
 git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
