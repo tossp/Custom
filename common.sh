@@ -6,7 +6,7 @@
 Diy_all() {
 echo "all"
 git clone https://github.com/281677160/luci-app-autoupdate package/luci-app-autoupdate
-mv build/${Modelfile}/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
+mv "${PATH1}"/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
 chmod -R +x package/base-files/files/bin
 }
 
