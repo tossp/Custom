@@ -1,5 +1,7 @@
 #!/bin/bash
-# 机型文件=${Modelfile}
+# https://github.com/281677160/build-openwrt
+# common Module by 28677160
+# matrix.target=${Modelfile}
 
 # 全脚本源码通用diy.sh文件
 
