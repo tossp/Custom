@@ -107,7 +107,7 @@ rm -rf package/lienol/luci-app-timecontrol
 rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3,luci-app-adguardhome}
 rm -rf package/lean/{luci-theme-argon}
 if [[ "${Modelfile}" == "Project_nanopi_r4s" ]]; then
-curl -fsSL https://raw.githubusercontent.com/1715173329/nanopi-r4s-openwrt/master/patches/1806-modify_for_r4s.patch > "${PATH1}/patches"/1806-modify_for_r4s.patch
+curl -fsSL https://raw.githubusercontent.com/1715173329/nanopi-r4s-openwrt/master/patches/1806-modify_for_r4s.patch > ./"${PATH1}/patches"/1806-modify_for_r4s.patch
 fi
 
 git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app-bypass
