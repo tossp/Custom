@@ -109,29 +109,21 @@ echo "天灵源码自定义2"
 
 # 判断脚本是否缺少主要文件
 Diy_settings() {
-if [ -n "$(ls -A "${PATH1}/settings.ini" 2>/dev/null)" ]; then
-echo
-else
+if [[ ! -d "${PATH1}/settings.ini" ]]; then
 echo "缺少[settings.ini]设置文件或者名字不正确,请注意区分大小写"
 source "${PATH1}/settings.ini"
 fi
-if [ -n "$(ls -A "${PATH1}/${CONFIG_FILE}" 2>/dev/null)" ]; then
-echo
-else
-echo "缺少[${CONFIG_FILE}]配置文件,正在补齐中,避免编译错误..."
-echo "# OpenWrt Configuration" > "${PATH1}/${CONFIG_FILE}"
+if [[ ! -d "${PATH1}/${CONFIG_FILE}" ]]; then
+echo "缺少[${CONFIG_FILE}]配置文件,请在[build/${Modelfile}]文件夹补齐"
+source "${PATH1}/${CONFIG_FILE}"
 fi
-if [ -n "$(ls -A "${PATH1}/${DIY_P1_SH}" 2>/dev/null)" ]; then
-echo
-else
-echo "缺少[${DIY_P1_SH}]自定义文件,正在补齐中,避免编译错误..."
-echo "#!/bin/bash" > "${PATH1}/${DIY_P1_SH}"
+if [[ ! -d "${PATH1}/${DIY_P1_SH}" ]]; then
+echo "缺少[${DIY_P1_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
+source "${PATH1}/${DIY_P1_SH}"
 fi
-if [ -n "$(ls -A "${PATH1}/${DIY_P2_SH}" 2>/dev/null)" ]; then
-echo
-else
-echo "缺少[${DIY_P2_SH}]自定义文件,正在补齐中,避免编译错误..."
-echo "#!/bin/bash" > "${PATH1}/${DIY_P2_SH}"
+if [[ ! -d "${PATH1}/${DIY_P2_SH}" ]]; then
+echo "缺少[${DIY_P2_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
+source "${PATH1}/${DIY_P2_SH}"
 fi
 }
 
