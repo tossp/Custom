@@ -115,27 +115,31 @@ if [ -n "$(ls -A "$PATH1/settings.ini" 2>/dev/null)" ]; then
 	echo
 else
 	echo "缺少[settings.ini]设置文件或者名字不正确,请注意区分大小写"
-	echo "errorss=1"
+	echo "errorss" > NAME1
+	[ -s NAME1 ] && echo "NAME1=$(cat NAME1)"
 fi
 if [ -n "$(ls -A "$PATH1/${CONFIG_FILE}" 2>/dev/null)" ]; then
 	echo
 else
 	echo "缺少[${CONFIG_FILE}]配置文件,请在[build/${Modelfile}]文件夹补齐"
-	echo "errorss=1"
+	echo "errorss" > NAME1
+	[ -s NAME1 ] && echo "NAME1=$(cat NAME1)"
 fi
 if [ -n "$(ls -A "$PATH1/${DIY_P1_SH}" 2>/dev/null)" ]; then
 	echo
 else
 	echo "缺少[${DIY_P1_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
-	echo "errorss=1"
+	echo "errorss" > NAME1
+	[ -s NAME1 ] && echo "NAME1=$(cat NAME1)"
 fi
 if [ -n "$(ls -A "$PATH1/${DIY_P2_SH}" 2>/dev/null)" ]; then
 	echo
 else
 	echo "缺少[${DIY_P2_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
-	echo "errorss=1"
+	echo "errorss" > NAME1
+	[ -s NAME1 ] && echo "NAME1=$(cat NAME1)"
 fi
-if [[ "errorss" == "1" ]]; then
+if [[ "${NAME1}" == "errorss" ]]; then
 exit 1
 fi
 }
