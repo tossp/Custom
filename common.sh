@@ -10,12 +10,6 @@ echo "all"
 git clone https://github.com/281677160/luci-app-autoupdate package/luci-app-autoupdate
 mv "$PATH1/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
 chmod -R +x package/base-files/files/bin
-
-if [ -n "$(ls -A "$PATH1/${CONFIG_FILE}" 2>/dev/null)" ]; then
- echo "....."
-else
-  echo "缺少[.config]配置文件"
-fi
 }
 
 # 全脚本源码通用diy2.sh文件
@@ -144,6 +138,11 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 # 公告
 
 Diy_notice() {
+if [ -n "$(ls -A "$PATH1/${CONFIG_FILE}" 2>/dev/null)" ]; then
+ echo "....."
+else
+  echo "缺少[.config]配置文件"
+fi
 echo ""
 echo "	《公告内容》"
 echo " 祝大家天天快乐、生活愉快！"
