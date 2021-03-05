@@ -119,7 +119,7 @@ if [ -n "$(ls -A "${PATH1}/${CONFIG_FILE}" 2>/dev/null)" ]; then
 echo
 else
 echo "缺少[${CONFIG_FILE}]配置文件,正在补齐中,避免编译错误..."
-"# OpenWrt Configuration" > "$PATH1/${CONFIG_FILE}"
+echo "# OpenWrt Configuration" > "${PATH1}/${CONFIG_FILE}"
 fi
 if [ -n "$(ls -A "${PATH1}/${DIY_P1_SH}" 2>/dev/null)" ]; then
 echo
