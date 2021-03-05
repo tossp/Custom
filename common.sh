@@ -115,6 +115,7 @@ rm -rf ${Home}/build/QUEWENJIANerros
 if [ -n "$(ls -A "$PATH1/${CONFIG_FILE}" 2>/dev/null)" ]; then
 	echo
 else
+	echo ""
 	echo "缺少[${CONFIG_FILE}]配置文件,请在[build/${Modelfile}]文件夹补齐"
 	echo "errors" > build/QUEWENJIANerros
 fi
