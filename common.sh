@@ -176,11 +176,6 @@ if [[ ${UPLOAD_BIN_DIR} == "true" ]]; then
 else
 	echo " 上传BIN文件夹(固件+IPK): 关闭"
 fi
-if [[ ${UPLOAD_CONFIG} == "true" ]]; then
-	echo " 上传[.config]配置文件: 开启"
-else
-	echo " 上传[.config]配置文件: 关闭"
-fi
 if [[ ${UPLOAD_FIRMWARE} == "true" ]]; then
 	echo " 上传固件在github空间: 开启"
 else
