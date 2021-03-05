@@ -111,31 +111,33 @@ echo "天灵源码自定义2"
 # 判断脚本是否缺少主要文件
 
 Diy_settings() {
+rm -rf ${Home}/build/QUEWENJIANerros
 if [ -n "$(ls -A "$PATH1/settings.ini" 2>/dev/null)" ]; then
 	echo
 else
 	echo "缺少[settings.ini]设置文件或者名字不正确,请注意区分大小写"
-	echo "errors" > QUEWENJIAN
+	echo "errors" > build/QUEWENJIANerros
 fi
 if [ -n "$(ls -A "$PATH1/${CONFIG_FILE}" 2>/dev/null)" ]; then
 	echo
 else
 	echo "缺少[${CONFIG_FILE}]配置文件,请在[build/${Modelfile}]文件夹补齐"
-	echo "errors" > QUEWENJIAN
+	echo "errors" > build/QUEWENJIANerros
 fi
 if [ -n "$(ls -A "$PATH1/${DIY_P1_SH}" 2>/dev/null)" ]; then
 	echo
 else
 	echo "缺少[${DIY_P1_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
-	echo "errors" > QUEWENJIAN
+	echo "errors" > build/QUEWENJIANerros
 fi
 if [ -n "$(ls -A "$PATH1/${DIY_P2_SH}" 2>/dev/null)" ]; then
 	echo
 else
 	echo "缺少[${DIY_P2_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
-	echo "errors" > QUEWENJIAN
+	echo "errors" > build/QUEWENJIANerros
 fi
-if [ -n "$(ls -A "QUEWENJIAN" 2>/dev/null)" ]; then
+if [ -n "$(ls -A "${Home}/build/QUEWENJIANerros" 2>/dev/null)" ]; then
+rm -rf ${Home}/build/QUEWENJIANerros
 exit 1
 fi
 }
