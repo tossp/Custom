@@ -109,19 +109,19 @@ echo "天灵源码自定义2"
 
 # 判断脚本是否缺少主要文件
 Diy_settings() {
-if [[ ! -d "${PATH1}/settings.ini" ]]; then
+if [[ -z "${PATH1}/settings.ini" ]]; then
 echo "缺少[settings.ini]设置文件或者名字不正确,请注意区分大小写"
 source "${PATH1}/settings.ini"
 fi
-if [[ ! -d "${PATH1}/${CONFIG_FILE}" ]]; then
+if [[ -z "${PATH1}/${CONFIG_FILE}" ]]; then
 echo "缺少[${CONFIG_FILE}]配置文件,请在[build/${Modelfile}]文件夹补齐"
 source "${PATH1}/${CONFIG_FILE}"
 fi
-if [[ ! -d "${PATH1}/${DIY_P1_SH}" ]]; then
+if [[ -z "${PATH1}/${DIY_P1_SH}" ]]; then
 echo "缺少[${DIY_P1_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
 source "${PATH1}/${DIY_P1_SH}"
 fi
-if [[ ! -d "${PATH1}/${DIY_P2_SH}" ]]; then
+if [[ -z "${PATH1}/${DIY_P2_SH}" ]]; then
 echo "缺少[${DIY_P2_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
 source "${PATH1}/${DIY_P2_SH}"
 fi
