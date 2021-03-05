@@ -112,7 +112,8 @@ Diy_settings() {
 if [ -n "$(ls -A "${PATH1}/${CONFIG_FILE}" 2>/dev/null)" ]; then
 echo ""
 else
-echo "::set-output name=${CONFIG_FILE}::error"
+echo "缺少[${CONFIG_FILE}]自定义文件"
+source "${PATH1}/common.sh" && Diy_settingss
 fi
 if [ -n "$(ls -A "${PATH1}/${DIY_P1_SH}" 2>/dev/null)" ]; then
 echo ""
