@@ -112,7 +112,7 @@ Diy_settings() {
 if [ -n "$(ls -A "${PATH1}/${CONFIG_FILE}" 2>/dev/null)" ]; then
 echo ""
 else
-echo "::warning ${PATH1}=${CONFIG_FILE},line=3,col=5::Missing semicolon"
+echo "::set-output name=${CONFIG_FILE}::error"
 fi
 if [ -n "$(ls -A "${PATH1}/${DIY_P1_SH}" 2>/dev/null)" ]; then
 echo ""
