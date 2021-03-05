@@ -49,7 +49,7 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 Diy_lede2() {
 echo "LEDE源码自定义2"
 rm -rf feeds/packages/lang/golang
-svn co https://github.com/Lienol/openwrt-packages/trunk/lang/golang feeds/packages/lang
+svn co https://github.com/Lienol/openwrt-packages/trunk/lang/golang feeds/packages/lang/golang
 }
 
 ################################################################################################################
