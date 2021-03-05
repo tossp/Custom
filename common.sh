@@ -107,7 +107,7 @@ echo "天灵源码自定义2"
 
 ################################################################################################################
 
-
+# 判断脚本是否缺少主要文件
 Diy_settings() {
 if [ -n "$(ls -A "${PATH1}/settings.ini" 2>/dev/null)" ]; then
 echo
@@ -119,7 +119,7 @@ if [ -n "$(ls -A "${PATH1}/${CONFIG_FILE}" 2>/dev/null)" ]; then
 echo
 else
 echo "缺少[${CONFIG_FILE}]配置文件,正在补齐中,避免编译错误..."
-"# OpenWrt Configuration" > "${PATH1}/${CONFIG_FILE}"
+"# OpenWrt Configuration" > "$PATH1/${CONFIG_FILE}"
 fi
 if [ -n "$(ls -A "${PATH1}/${DIY_P1_SH}" 2>/dev/null)" ]; then
 echo
