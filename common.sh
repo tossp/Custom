@@ -109,22 +109,28 @@ echo "天灵源码自定义2"
 
 
 Diy_settings() {
-if [ -n "$(ls -A "${PATH1}/${CONFIG_FILE}" 2>/dev/null)" ]; then
-echo ""
+if [ -n "$(ls -A "${PATH1}/settings.ini" 2>/dev/null)" ]; then
+echo
 else
-echo "缺少[${CONFIG_FILE}]自定义文件"
-source "${PATH1}/${CONFIG_FILE}"
+echo "缺少[settings.ini]设置文件或者名字不正确,请注意区分大小写"
+source "${PATH1}/settings.ini"
+fi
+if [ -n "$(ls -A "${PATH1}/${CONFIG_FILE}" 2>/dev/null)" ]; then
+echo
+else
+echo "缺少[${CONFIG_FILE}]配置文件,正在补齐中,避免编译错误..."
+"# OpenWrt Configuration" > "${PATH1}/${CONFIG_FILE}"
 fi
 if [ -n "$(ls -A "${PATH1}/${DIY_P1_SH}" 2>/dev/null)" ]; then
-echo ""
+echo
 else
-echo "缺少[${DIY_P1_SH}]自定义文件"
+echo "缺少[${DIY_P1_SH}]自定义文件,正在补齐中,避免编译错误..."
 echo "#!/bin/bash" > "${PATH1}/${DIY_P1_SH}"
 fi
 if [ -n "$(ls -A "${PATH1}/${DIY_P2_SH}" 2>/dev/null)" ]; then
-echo ""
+echo
 else
-echo "缺少[${DIY_P2_SH}]自定义文件"
+echo "缺少[${DIY_P2_SH}]自定义文件,正在补齐中,避免编译错误..."
 echo "#!/bin/bash" > "${PATH1}/${DIY_P2_SH}"
 fi
 }
