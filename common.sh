@@ -108,16 +108,10 @@ echo "天灵源码自定义2"
 ################################################################################################################
 
 ################################################################################################################
-# 判断脚本是否缺少主要文件
+# 判断脚本是否缺少主要文件（如果缺少settings.ini设置文件在检测脚本设置就运行错误了）
 
 Diy_settings() {
 rm -rf ${Home}/build/QUEWENJIANerros
-if [ -n "$(ls -A "$PATH1/settings.ini" 2>/dev/null)" ]; then
-	echo
-else
-	echo "缺少[settings.ini]设置文件或者名字不正确,请注意区分大小写"
-	echo "errors" > build/QUEWENJIANerros
-fi
 if [ -n "$(ls -A "$PATH1/${CONFIG_FILE}" 2>/dev/null)" ]; then
 	echo
 else
