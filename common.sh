@@ -8,8 +8,14 @@
 Diy_all() {
 echo "all"
 git clone https://github.com/281677160/luci-app-autoupdate package/luci-app-autoupdate
-mv "${PATH1}"/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
+mv "$PATH1/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
 chmod -R +x package/base-files/files/bin
+
+if [ -n "$(ls -A "$PATH1/.config" 2>/dev/null)" ]; then
+ echo "....."
+else
+ echo "# OpenWrt Configuration" > $PATH1/.config
+fi
 }
 
 # 全脚本源码通用diy2.sh文件
