@@ -29,6 +29,7 @@ rm -rf ./*/*/{LICENSE,README,README.md}
 Diy_lede() {
 echo "LEDE源码自定义1"
 cp -Rf build/common/LEDE/* "${PATH1}"
+rm -rf package/lean/v2ray-plugin
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
 if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
@@ -48,8 +49,6 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 ################################################################################################################
 Diy_lede2() {
 echo "LEDE源码自定义2"
-rm -rf package/lean/v2ray-plugin
-rm -rf feeds/packages/net/haproxy
 }
 
 ################################################################################################################
