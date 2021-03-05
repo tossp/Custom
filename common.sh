@@ -48,6 +48,8 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 ################################################################################################################
 Diy_lede2() {
 echo "LEDE源码自定义2"
+rm -rf package/lean/v2ray-plugin
+rm -rf feeds/packages/net/haproxy
 }
 
 ################################################################################################################
