@@ -171,11 +171,6 @@ echo " 源码作者: ${ZUOZHE}"
 echo " 编译机型: ${TARGET_PROFILE}"
 echo " 固件作者: ${Author}"
 echo " 仓库地址: ${Github_Repo}"
-if [[ ${UPLOAD_BIN_DIR} == "true" ]]; then
-	echo " 上传BIN文件夹(固件+IPK): 开启"
-else
-	echo " 上传BIN文件夹(固件+IPK): 关闭"
-fi
 if [[ ${UPLOAD_FIRMWARE} == "true" ]]; then
 	echo " 上传固件在github空间: 开启"
 else
