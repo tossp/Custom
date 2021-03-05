@@ -6,6 +6,7 @@
 # 全脚本源码通用diy.sh文件
 Diy_all() {
 echo "all"
+git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
 git clone https://github.com/281677160/luci-app-autoupdate package/luci-app-autoupdate
 mv "${PATH1}"/{AutoUpdate.sh,AutoBuild_Tools.sh} package/base-files/files/bin
 chmod -R +x package/base-files/files/bin
@@ -28,7 +29,6 @@ rm -rf ./*/*/{LICENSE,README,README.md}
 Diy_lede() {
 echo "LEDE源码自定义1"
 cp -Rf build/common/LEDE/* "${PATH1}"
-git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
 if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
@@ -59,7 +59,6 @@ echo "LEDE源码自定义2"
 Diy_lienol() {
 echo "LIENOL源码自定义1"
 cp -Rf build/common/LIENOL/* "${PATH1}"
-git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
 rm -rf package/diy/luci-app-adguardhome
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
 
@@ -88,7 +87,6 @@ echo "LIENOL源码自定义2"
 Diy_immortalwrt() {
 echo "天灵源码自定义1"
 cp -Rf build/common/PROJECT/* "${PATH1}"
-git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
 rm -rf package/lienol/luci-app-timecontrol
 rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3,luci-app-adguardhome}
 rm -rf package/lean/{luci-theme-argon}
