@@ -110,19 +110,19 @@ echo "天灵源码自定义2"
 
 Diy_settings() {
 if [ -n "$(ls -A "${PATH1}/${CONFIG_FILE}" 2>/dev/null)" ]; then
-echo "....."
+echo ""
 else
 echo "缺少[${CONFIG_FILE}]配置文件"
 echo "# OpenWrt Configuration" > "${PATH1}/${CONFIG_FILE}"
 fi
 if [ -n "$(ls -A "${PATH1}/${DIY_P1_SH}" 2>/dev/null)" ]; then
-echo "....."
+echo ""
 else
 echo "缺少[${DIY_P1_SH}]自定义文件"
 echo "#!/bin/bash" > "${PATH1}/${DIY_P1_SH}"
 fi
 if [ -n "$(ls -A "${PATH1}/${DIY_P2_SH}" 2>/dev/null)" ]; then
-echo "....."
+echo ""
 else
 echo "缺少[${DIY_P2_SH}]自定义文件"
 echo "#!/bin/bash" > "${PATH1}/${DIY_P2_SH}"
