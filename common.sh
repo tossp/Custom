@@ -60,7 +60,6 @@ echo
 Diy_lienol() {
 cp -Rf build/common/LIENOL/* "${PATH1}"
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
-
 git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
 git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
@@ -75,6 +74,8 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 ################################################################################################################
 Diy_lienol2() {
 echo
+sed -i 's/"免费开源，功能强大的全网络广告和跟踪程序拦截DNS服务器"/去广告和跟踪程序拦截DNS服务器，网页管理账号和密码均为：admin/g' package/diy/luci-app-adguardhome/po/zh-cn/AdGuardHome.po
+sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/default-settings/files/zzz-default-settings
 }
 
 ################################################################################################################
@@ -101,6 +102,8 @@ git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app
 ################################################################################################################
 Diy_immortalwrt2() {
 echo
+sed -i 's/"免费开源，功能强大的全网络广告和跟踪程序拦截DNS服务器"/去广告和跟踪程序拦截DNS服务器，网页管理账号和密码均为：admin/g' package/ctcgfw/luci-app-adguardhome/po/zh-cn/AdGuardHome.po
+sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
 }
 
 ################################################################################################################
@@ -133,18 +136,6 @@ if [ -n "$(ls -A "${Home}/build/QUEWENJIANerros" 2>/dev/null)" ]; then
 rm -rf ${Home}/build/QUEWENJIANerros
 exit 1
 fi
-}
-
-
-Diy_adguard() {
-ADGU="$(grep "CONFIG_PACKAGE_luci-app-adguardhome=y"  .config)"
-if [[ "${ADGU}" == "CONFIG_PACKAGE_luci-app-adguardhome=y" ]];then
-	if [[ "${TARGET_PROFILE}" == "x86-64" ]];then
-		svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-adgu files
-		chmod -R +x files
-	fi
-fi
-
 }
 ################################################################################################################
 # N1、微加云、贝壳云、我家云、S9xxx 打包程序
