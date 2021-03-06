@@ -34,6 +34,7 @@ if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
 echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
 fi
+sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
 git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
 git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
