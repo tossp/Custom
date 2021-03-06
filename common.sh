@@ -243,8 +243,9 @@ else
 	echo " 把定时自动更新插件编译进固件: 关闭"
 	echo ""
 fi
-echo " 系统空间      类型   总数  已用  可用 使用率"
-cd ../ && df -hT $PWD && cd openwrt
 echo ""
 echo " 您现在使用的是【${Modelfile}】文件夹编译【${TARGET_PROFILE}】固件,请核对以上信息是否正确！"
+echo ""
+echo " 系统空间      类型   总数  已用  可用 使用率"
+cd ../ && df -hT $PWD && cd openwrt
 }
