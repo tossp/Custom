@@ -136,6 +136,15 @@ fi
 }
 
 
+Diy_adguard() {
+ADGU="$(grep "CONFIG_PACKAGE_luci-app-adguardhome" ${Home}/.config)"
+if [[ "${ADGU}" == "CONFIG_PACKAGE_luci-app-adguardhome=y" ]];then
+	if [[ "${TARGET_PROFILE}" == "x86-64" ]];then
+	svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-adgu files
+	fi
+fi
+
+}
 ################################################################################################################
 # N1、微加云、贝壳云、我家云、S9xxx 打包程序
 
