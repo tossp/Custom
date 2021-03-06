@@ -141,6 +141,7 @@ ADGU="$(grep "CONFIG_PACKAGE_luci-app-adguardhome" ${Home}/.config)"
 if [[ "${ADGU}" == "CONFIG_PACKAGE_luci-app-adguardhome=y" ]];then
 	if [[ "${TARGET_PROFILE}" == "x86-64" ]];then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-adgu files
+		chmod -R +x files
 	fi
 fi
 
