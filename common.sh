@@ -200,9 +200,9 @@ else
 	echo " 上传[.config]配置文件: 关闭"
 fi
 if [[ ${UPLOAD_FIRMWARE} == "true" ]]; then
-	echo " 上传固件在github空间: 开启"
+	echo " 上传固件在github actions: 开启"
 else
-	echo " 上传固件在github空间: 关闭"
+	echo " 上传固件在github actions: 关闭"
 fi
 if [[ ${UPLOAD_COWTRANSFER} == "true" ]]; then
 	echo " 上传固件到到【奶牛快传】和【WETRANSFER】: 开启"
@@ -225,7 +225,7 @@ else
 	echo " SSH远程连接: 关闭"
 fi
 if [[ ${SSHYC} == "true" ]]; then
-	echo " SSH远程临时开关: 开启"
+	echo " SSH远程连接临时开关: 开启"
 fi
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo ""
