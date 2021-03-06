@@ -85,8 +85,8 @@ echo
 Diy_immortalwrt() {
 cp -Rf build/common/PROJECT/* "${PATH1}"
 rm -rf package/lienol/luci-app-timecontrol
-rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3}
-rm -rf package/lean/{luci-theme-argon}
+rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv2,luci-theme-argonv3}
+rm -rf package/lean/luci-theme-argon
 if [[ "${Modelfile}" == "Project_nanopi_r4s" ]]; then
 curl -fsSL https://raw.githubusercontent.com/1715173329/nanopi-r4s-openwrt/master/patches/1806-modify_for_r4s.patch > "${PATH1}/patches"/1806-modify_for_r4s.patch
 fi
