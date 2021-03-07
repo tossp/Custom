@@ -158,6 +158,7 @@ if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]
 	else
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/peizhi ${Home}/files/etc
 		chmod -R +x ${Home}/files
+	fi
 fi
 }
 ################################################################################################################
