@@ -138,6 +138,11 @@ exit 1
 fi
 }
 
+
+
+################################################################################################################
+# 判断AdGuard Home
+
 Diy_adgu() {
 if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
 	if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
@@ -145,10 +150,13 @@ if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]
 		chmod -R +x ${Home}/files
 	fi
 fi
+
 if [[ "${REPO_URL}" =~ (${LEDE}|${LIENOL}) ]]; then
-svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-adgu ${Home}/files
+	svn co https://github.com/281677160/ceshi1/branches/AdGuard/peizhi ${Home}/files/etc/config
+	chmod -R +x ${Home}/files
 else
-svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-adgu ${Home}/files
+	svn co https://github.com/281677160/ceshi1/branches/AdGuard/peizhi ${Home}/files/etc
+	chmod -R +x ${Home}/files
 }
 ################################################################################################################
 # N1、微加云、贝壳云、我家云、S9xxx 打包程序
