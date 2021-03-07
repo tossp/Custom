@@ -114,10 +114,6 @@ sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.
 # 判断脚本是否缺少主要文件（如果缺少settings.ini设置文件在检测脚本设置就运行错误了）
 
 Diy_settings() {
-cd ../
-echo "$(date +"%Y年%m月%d号-%H点%M分")更新" > GONGGAO
-cd openwrt
-
 rm -rf ${Home}/build/QUEWENJIANerros
 if [ -n "$(ls -A "$PATH1/${CONFIG_FILE}" 2>/dev/null)" ]; then
 	echo
