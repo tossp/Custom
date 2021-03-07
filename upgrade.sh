@@ -167,7 +167,3 @@ Mkdir() {
 Diy_xinxi() {
 	Diy_xinxi_Base
 }
-
-Diy_adgu() {
-	Diy_adgu_Base
-}
