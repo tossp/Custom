@@ -144,14 +144,19 @@ fi
 # 判断AdGuard Home
 
 Diy_adgu_Base() {
-GET_TARGET_INFO
+x86_Test="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/CONFIG_TARGET_(.*)_DEVICE_(.*)=y/\1/')"
+if [[ "${x86_Test}" == "x86_64" ]];then
+	TARGET_PROFILE="x86_64"
+else
+	TARGET_PROFILE="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
+fi
 if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
 	mkdir -p files
-	if [[ "${TARGET_PROFILE}" =~ (x86-64) ]]; then
+	if [[ "${TARGET_PROFILE}" == "x86_64" ]]; then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-64 files
 		chmod -R +x ${Home}/files
 	fi
-	if [[ "${TARGET_PROFILE}" =~ (friendlyarm_nanopi-r2s) ]]; then
+	if [[ "${TARGET_PROFILE}" == "friendlyarm_nanopi-r2s" ]]; then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/R2S files
 		chmod -R +x ${Home}/files
 	fi
