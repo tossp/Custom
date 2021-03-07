@@ -157,18 +157,14 @@ if [[ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' 
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-64 ${Home}/files
 		chmod -R +x ${Home}/files
 	fi
+	if [[ "${TARGET_ADG}" == "friendlyarm_nanopi-r2s" ]];then
+		svn co https://github.com/281677160/ceshi1/branches/AdGuard/R2S ${Home}/files
+		chmod -R +x ${Home}/files
+	fi
 	if [[ -z "$(ls -A "${Home}/files/etc/config/AdGuardHome.yaml" 2>/dev/null)" ]]; then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/peizhi ${Home}/files/etc/config
 	fi
 fi
-
-if [[ "${TARGET_ADG}" == "friendlyarm_nanopi-r2s" ]];then
-	if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
-		svn co https://github.com/281677160/ceshi1/branches/AdGuard/R2S ${Home}/files
-		chmod -R +x ${Home}/files
-	fi
-fi
-
 }
 ################################################################################################################
 # N1、微加云、贝壳云、我家云、S9xxx 打包程序
