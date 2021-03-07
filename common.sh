@@ -115,7 +115,7 @@ sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.
 
 Diy_settings() {
 cd ../
-echo "$(date +"%Y年%m月%d号-%H点%M分")更新" > gonggao.txt
+echo "$(date +"%Y年%m月%d号-%H点%M分")更新" > GONGGAO
 cd openwrt
 
 rm -rf ${Home}/build/QUEWENJIANerros
