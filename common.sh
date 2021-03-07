@@ -252,9 +252,9 @@ else
 	echo " 发布固件: 关闭"
 fi
 if [[ ${SERVERCHAN_SCKEY} == "true" ]]; then
-	echo " 微信通知: 开启"
+	echo " 微信/电报通知: 开启"
 else
-	echo " 微信通知: 关闭"
+	echo " 微信/电报通知: 关闭"
 fi
 if [[ ${SSH_ACTIONS} == "true" ]]; then
 	echo " SSH远程连接: 开启"
