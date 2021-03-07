@@ -156,6 +156,13 @@ if [[ "${TARGET_ADG}" == "x86-64" ]];then
 		chmod -R +x ${Home}/files
 	fi
 fi
+if [[ "${TARGET_ADG}" == "friendlyarm_nanopi-r2s" ]];then
+	if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
+		svn co https://github.com/281677160/ceshi1/branches/AdGuard/R2S ${Home}/files
+		chmod -R +x ${Home}/files
+	fi
+fi
+
 if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
 	if [[ "${REPO_URL}" =~ ("${LEDE}"|"${LIENOL}") ]]; then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/peizhi ${Home}/files/etc/config
