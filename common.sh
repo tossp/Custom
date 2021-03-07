@@ -147,18 +147,18 @@ Diy_adgu_Base() {
 GET_TARGET_INFO
 if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
 	mkdir -p files
-	if [[ "${TARGET_PROFILE}" == "x86-64" ]]; then
+	if [[ "${TARGET_PROFILE}" =~ (x86-64) ]]; then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-64 files
 		chmod -R +x ${Home}/files
 	fi
-	if [[ "${TARGET_PROFILE}" == "friendlyarm_nanopi-r2s" ]]; then
+	if [[ "${TARGET_PROFILE}" =~ (friendlyarm_nanopi-r2s) ]]; then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/R2S files
 		chmod -R +x ${Home}/files
 	fi
 fi
 
 if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
-	if [[ "${REPO_URL}" =~ (${LEDE}|${LIENOL}) ]]; then
+	if [[ "${REPO_URL}" =~ ("${LEDE}"|"${LIENOL}") ]]; then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/peizhi ${Home}/files/etc/config
 		chmod -R +x ${Home}/files
 	else
