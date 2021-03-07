@@ -165,8 +165,12 @@ if [[ "${TARGET_ADG}" == "friendlyarm_nanopi-r2s" ]];then
 fi
 
 if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
-	svn co https://github.com/281677160/ceshi1/branches/AdGuard/peizhi ${Home}/files/etc/config
-	chmod -R +x ${Home}/files
+	if [ -n "$(ls -A "${Home}/files/etc/config/AdGuardHome.yaml" 2>/dev/null)" ]; then
+		echo
+	else
+		svn co https://github.com/281677160/ceshi1/branches/AdGuard/peizhi ${Home}/files/etc/config
+		chmod -R +x ${Home}/files
+	fi
 fi
 }
 ################################################################################################################
