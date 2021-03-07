@@ -74,7 +74,7 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 ################################################################################################################
 Diy_lienol2() {
 echo
-sed -i 's/"免费开源，功能强大的全网络广告和跟踪程序拦截DNS服务器"/免费去广告和跟踪程序拦截DNS服务器，网页管理账号和密码均为：admin/g' package/diy/luci-app-adguardhome/po/zh-cn/AdGuardHome.po
+sed -i 's/"免费开源，功能强大的全网络广告和跟踪程序拦截DNS服务器"/"免费去广告和跟踪程序拦截DNS服务器，网页管理账号和密码均为：admin"/g' package/diy/luci-app-adguardhome/po/zh-cn/AdGuardHome.po
 sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/default-settings/files/zzz-default-settings
 }
 
@@ -102,7 +102,7 @@ git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app
 ################################################################################################################
 Diy_immortalwrt2() {
 echo
-sed -i 's/"免费开源，功能强大的全网络广告和跟踪程序拦截DNS服务器"/免费去广告和跟踪程序拦截DNS服务器，网页管理账号和密码均为：admin/g' package/ctcgfw/luci-app-adguardhome/po/zh-cn/AdGuardHome.po
+sed -i 's/"免费开源，功能强大的全网络广告和跟踪程序拦截DNS服务器"/"免费去广告和跟踪程序拦截DNS服务器，网页管理账号和密码均为：admin"/g' package/ctcgfw/luci-app-adguardhome/po/zh-cn/AdGuardHome.po
 sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
 }
 
