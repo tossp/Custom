@@ -146,13 +146,15 @@ fi
 Diy_adgu() {
 x86_Test="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/CONFIG_TARGET_(.*)_DEVICE_(.*)=y/\1/')"
 if [[ "${x86_Test}" == "x86_64" ]];then
-	TARGET_PROFILE="x86_64"
+	TARGET_ADG="x86-64"
 else
-	TARGET_PROFILE="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
+	TARGET_ADG="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
 fi
-if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
-	svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-64 ${Home}/files
-	chmod -R +x ${Home}/files
+if [[ "${TARGET_ADG}" == "x86-64" ]];then
+	if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
+		svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-64 ${Home}/files
+		chmod -R +x ${Home}/files
+	fi
 fi
 if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
 	if [[ "${REPO_URL}" =~ ("${LEDE}"|"${LIENOL}") ]]; then
