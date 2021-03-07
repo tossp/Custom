@@ -87,7 +87,7 @@ sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.
 Diy_immortalwrt() {
 cp -Rf build/common/PROJECT/* "${PATH1}"
 rm -rf package/lienol/luci-app-timecontrol
-rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv2,luci-theme-argonv3}
+rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3,luci-app-adguardhome}
 rm -rf package/lean/luci-theme-argon
 if [ -n "$(ls -A "${PATH1}/patches/1806-modify_for_r4s.patch" 2>/dev/null)" ]; then
 curl -fsSL https://raw.githubusercontent.com/1715173329/nanopi-r4s-openwrt/master/patches/1806-modify_for_r4s.patch > "${PATH1}/patches"/1806-modify_for_r4s.patch
@@ -104,8 +104,8 @@ git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app
 ################################################################################################################
 Diy_immortalwrt2() {
 echo
-sed -i 's/"免费开源，功能强大的全网络广告和跟踪程序拦截DNS服务器"/"免费去广告和跟踪程序拦截DNS服务器，网页管理账号和密码均为：admin"/g' package/ctcgfw/luci-app-adguardhome/po/zh-cn/AdGuardHome.po
-sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
+rm -rf feeds/packages/net/adguardhome
+sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/default-settings/files/zzz-default-settings
 }
 
 ################################################################################################################
