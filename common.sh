@@ -143,7 +143,7 @@ fi
 ################################################################################################################
 # 判断AdGuard Home
 
-Diy_adgu_Base() {
+Diy_adgu() {
 x86_Test="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/CONFIG_TARGET_(.*)_DEVICE_(.*)=y/\1/')"
 if [[ "${x86_Test}" == "x86_64" ]];then
 	TARGET_PROFILE="x86_64"
