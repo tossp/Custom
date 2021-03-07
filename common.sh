@@ -156,7 +156,7 @@ if [[ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' 
 	if [[ "${TARGET_ADG}" == "x86-64" ]];then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-64 ${Home}/files
 		chmod -R +x ${Home}/files
-	elif [[ -z "$(ls -A "${Home}/files/etc/config/AdGuardHome.yaml" 2>/dev/null)" ]]; then
+	elif [[  ! -n "$(ls -A "${Home}/files/etc/config/AdGuardHome.yaml")" ]]; then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/peizhi ${Home}/files/etc/config
 	fi
 fi
