@@ -76,6 +76,7 @@ Diy_lienol2() {
 echo
 sed -i 's/"免费开源，功能强大的全网络广告和跟踪程序拦截DNS服务器"/"免费去广告和跟踪程序拦截DNS服务器，网页管理账号和密码均为：admin"/g' package/diy/luci-app-adguardhome/po/zh-cn/AdGuardHome.po
 sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/default-settings/files/zzz-default-settings
+curl -fsSL https://raw.githubusercontent.com/281677160/ceshi1/AdGuard/AdGuardHome > "${Home}/package/diy/luci-app-adguardhome/root/etc/config/AdGuardHome
 }
 
 ################################################################################################################
@@ -106,6 +107,7 @@ Diy_immortalwrt2() {
 echo
 rm -rf feeds/packages/net/adguardhome
 sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
+curl -fsSL https://raw.githubusercontent.com/281677160/ceshi1/AdGuard/AdGuardHome > "${Home}/package/ctcgfw/luci-app-adguardhome/root/etc/config/AdGuardHome
 }
 
 ################################################################################################################
