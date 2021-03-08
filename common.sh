@@ -49,7 +49,6 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 ################################################################################################################
 Diy_lede2() {
 echo
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
 }
 
 ################################################################################################################
@@ -60,10 +59,7 @@ sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost
 ################################################################################################################
 Diy_lienol() {
 cp -Rf build/common/LIENOL/* "${PATH1}"
-rm -rf package/diy/luci-app-adguardhome
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
-sed -i '/CONFIG_PACKAGE_luci-app-passwall/d' "${Home}/.config" > /dev/null 2>&1
-echo -e "\nCONFIG_PACKAGE_luci-app-passwall=y" >> "${Home}/.config"
 git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
 git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
@@ -79,7 +75,6 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 Diy_lienol2() {
 echo
 rm -rf feeds/packages/net/adguardhome
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/default-settings/files/zzz-default-settings
 }
 
 ################################################################################################################
@@ -109,7 +104,6 @@ git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app
 Diy_immortalwrt2() {
 echo
 rm -rf feeds/packages/net/adguardhome
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
 }
 
 ################################################################################################################
