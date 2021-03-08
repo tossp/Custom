@@ -27,7 +27,6 @@ rm -rf ./*/*/{LICENSE,README,README.md}
 ################################################################################################################
 Diy_lede() {
 cp -Rf build/common/LEDE/* "${PATH1}"
-rm -rf package/lean/v2ray-plugin
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
 sed -i 's/iptables -t nat/# iptables -t nat/g' package/lean/default-settings/files/zzz-default-settings
 if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
