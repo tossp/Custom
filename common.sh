@@ -34,7 +34,7 @@ if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
 echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
 fi
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
+sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
 git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
 git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
@@ -75,7 +75,7 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 Diy_lienol2() {
 echo
 sed -i 's/"免费开源，功能强大的全网络广告和跟踪程序拦截DNS服务器"/"免费去广告和跟踪程序拦截DNS服务器，网页管理账号和密码均为：admin"/g' package/diy/luci-app-adguardhome/po/zh-cn/AdGuardHome.po
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/default-settings/files/zzz-default-settings
+sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/default-settings/files/zzz-default-settings
 curl -fsSL https://raw.githubusercontent.com/281677160/ceshi1/AdGuard/AdGuardHome > "${Home}/package/diy/luci-app-adguardhome/root/etc/config/AdGuardHome
 }
 
@@ -106,7 +106,7 @@ git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app
 Diy_immortalwrt2() {
 echo
 rm -rf feeds/packages/net/adguardhome
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
+sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
 }
 
 ################################################################################################################
@@ -152,18 +152,25 @@ if [ `grep -c "CONFIG_TARGET_x86_64=y" ${Home}/.config` -eq '1' ]; then
 else
 	TARGET_ADG="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
 fi
-
-if [[ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]]; then
-	if [[ "${TARGET_ADG}" == "x86-64" ]];then
+if [[ "${TARGET_ADG}" == "x86-64" ]];then
+	if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/x86-64 ${Home}/files
 		chmod -R +x ${Home}/files
 	fi
-	if [[ "${TARGET_ADG}" == "friendlyarm_nanopi-r2s" ]];then
+fi
+if [[ "${TARGET_ADG}" == "friendlyarm_nanopi-r2s" ]];then
+	if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/R2S ${Home}/files
 		chmod -R +x ${Home}/files
 	fi
-	if [[ -z "$(ls -A "${Home}/files/etc/config/AdGuardHome.yaml" 2>/dev/null)" ]]; then
+fi
+
+if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
+	if [ -n "$(ls -A "${Home}/files/etc/config/AdGuardHome.yaml" 2>/dev/null)" ]; then
+		echo
+	else
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/peizhi ${Home}/files/etc/config
+		chmod -R +x ${Home}/files
 	fi
 fi
 }
