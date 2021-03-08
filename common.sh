@@ -76,7 +76,7 @@ Diy_lienol2() {
 echo
 sed -i 's/"免费开源，功能强大的全网络广告和跟踪程序拦截DNS服务器"/"免费去广告和跟踪程序拦截DNS服务器，网页管理账号和密码均为：admin"/g' package/diy/luci-app-adguardhome/po/zh-cn/AdGuardHome.po
 sed -i '$i '"chmod -R +x /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/default-settings/files/zzz-default-settings
-curl -fsSL https://raw.githubusercontent.com/281677160/ceshi1/AdGuard/AdGuardHome > "${Home}/package/diy/luci-app-adguardhome/root/etc/config/AdGuardHome
+curl -fsSL https://raw.githubusercontent.com/281677160/ceshi1/AdGuard/AdGuardHome > ${Home}/package/diy/luci-app-adguardhome/root/etc/config/AdGuardHome
 }
 
 ################################################################################################################
@@ -166,9 +166,7 @@ if [[ "${TARGET_ADG}" == "friendlyarm_nanopi-r2s" ]];then
 fi
 
 if [ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]; then
-	if [ -n "$(ls -A "${Home}/files/etc/config/AdGuardHome.yaml" 2>/dev/null)" ]; then
-		echo
-	else
+	if [ -z "$(ls -A "${Home}/files/etc/config/AdGuardHome.yaml" 2>/dev/null)" ]; then
 		svn co https://github.com/281677160/ceshi1/branches/AdGuard/peizhi ${Home}/files/etc/config
 		chmod -R +x ${Home}/files
 	fi
