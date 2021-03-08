@@ -107,7 +107,6 @@ Diy_immortalwrt2() {
 echo
 rm -rf feeds/packages/net/adguardhome
 sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
-curl -fsSL https://raw.githubusercontent.com/281677160/ceshi1/AdGuard/AdGuardHome > "${Home}/package/ctcgfw/luci-app-adguardhome/root/etc/config/AdGuardHome
 }
 
 ################################################################################################################
