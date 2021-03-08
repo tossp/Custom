@@ -110,8 +110,8 @@ filters:
   name: anti-AD命中率最高列表
   id: 1615130488
 - enabled: true
-  url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt
-  name: 乘风 广告过滤规则
+  url: https://halflife.coding.net/p/list/d/list/git/raw/master/ad.txt
+  name: HalfLife合拼乘风广告规则
   id: 1615130489
 - enabled: true
   url: https://gist.githubusercontent.com/Ewpratten/a25ae63a7200c02c850fede2f32453cf/raw/b9318009399b99e822515d388b8458557d828c37/hosts-yt-ads
