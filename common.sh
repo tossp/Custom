@@ -188,8 +188,11 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 Diy_notice() {
 echo ""
 echo "	《公告内容》"
-echo " 祝大家天天快乐、生活愉快！"
-echo " 使用中有疑问的可以加入电报群，跟群友交流"
+echo " 请大家使用3月9号最新版仓库编译"
+echo " 把定时更新固件升级到5.2版本"
+echo " x86-64、phicomm-k3、newifi-d2、phicomm_k2p自动适配固件名字跟后缀,无需设置"
+echo " 优化了脚本,最新版修复了AdGuardHome权限问题不能启动"
+echo " x86-64跟R2S编译AdGuardHome自动增加核心,免除下载"
 echo "[Telegram交流群] https://t.me/joinchat/AAAAAE3eOMwEHysw9HMcVQ"
 echo ""
 }
