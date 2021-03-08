@@ -120,14 +120,17 @@ if [ -z "$(ls -A "$PATH1/${CONFIG_FILE}" 2>/dev/null)" ]; then
 	echo
 	echo "编译脚本缺少[${CONFIG_FILE}]配置文件,请在[build/${Modelfile}]文件夹补齐"
 	echo "errors" > ${Home}/build/QUEWENJIANerros
+	echo
 fi
 if [ -z "$(ls -A "$PATH1/${DIY_P1_SH}" 2>/dev/null)" ]; then
 	echo "编译脚本缺少[${DIY_P1_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
 	echo "errors" > ${Home}/build/QUEWENJIANerros
+	echo
 fi
 if [ -z "$(ls -A "$PATH1/${DIY_P2_SH}" 2>/dev/null)" ]; then
 	echo "编译脚本缺少[${DIY_P2_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
 	echo "errors" > ${Home}/build/QUEWENJIANerros
+	echo
 fi
 if [ -n "$(ls -A "${Home}/build/QUEWENJIANerros" 2>/dev/null)" ]; then
 rm -rf ${Home}/build/QUEWENJIANerros
