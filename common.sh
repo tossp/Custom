@@ -118,19 +118,19 @@ Diy_settings() {
 rm -rf ${Home}/build/QUEWENJIANerros
 if [ -z "$(ls -A "$PATH1/${CONFIG_FILE}" 2>/dev/null)" ]; then
 	echo
-	echo "编译脚本缺少[${CONFIG_FILE}]配置文件,请在[build/${Modelfile}]文件夹补齐"
+	echo "编译脚本缺少[${CONFIG_FILE}]名称的配置文件,请在[build/${Modelfile}]文件夹内补齐"
 	echo "errors" > ${Home}/build/QUEWENJIANerros
 	echo
 fi
 if [ -z "$(ls -A "$PATH1/${DIY_P1_SH}" 2>/dev/null)" ]; then
 	echo
-	echo "编译脚本缺少[${DIY_P1_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
+	echo "编译脚本缺少[${DIY_P1_SH}]名称的自定义设置文件,请在[build/${Modelfile}]文件夹内补齐"
 	echo "errors" > ${Home}/build/QUEWENJIANerros
 	echo
 fi
 if [ -z "$(ls -A "$PATH1/${DIY_P2_SH}" 2>/dev/null)" ]; then
 	echo
-	echo "编译脚本缺少[${DIY_P2_SH}]配置文件,请在[build/${Modelfile}]文件夹补齐"
+	echo "编译脚本缺少[${DIY_P2_SH}]名称的自定义设置文件,请在[build/${Modelfile}]文件夹内补齐"
 	echo "errors" > ${Home}/build/QUEWENJIANerros
 	echo
 fi
