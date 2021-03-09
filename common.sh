@@ -92,7 +92,7 @@ sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost
 Diy_immortalwrt() {
 cp -Rf build/common/PROJECT/* "${PATH1}"
 rm -rf package/lienol/luci-app-timecontrol
-rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3,luci-app-adguardhome}
+rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3}
 rm -rf package/lean/luci-theme-argon
 #if [ -n "$(ls -A "${PATH1}/patches/1806-modify_for_r4s.patch" 2>/dev/null)" ]; then
 #curl -fsSL https://raw.githubusercontent.com/1715173329/nanopi-r4s-openwrt/master/patches/1806-modify_for_r4s.patch > "${PATH1}/patches"/1806-modify_for_r4s.patch
@@ -155,6 +155,8 @@ if [ `grep -c "CONFIG_TARGET_x86_64=y" ${Home}/.config` -eq '1' ]; then
 else
 	TARGET_ADG="$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*DEVICE_(.*)=y/\1/')"
 fi
+
+
 if [[ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]]; then
 	if [[ "${TARGET_ADG}" == "x86-64" ]];then
 		svn co https://github.com/281677160/Custom/branches/AdGuard/x86-64 ${Home}/files
