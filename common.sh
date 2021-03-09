@@ -110,9 +110,8 @@ git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app
 ################################################################################################################
 Diy_immortalwrt2() {
 echo
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
 }
-
+sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
 ################################################################################################################
 
 ################################################################################################################
