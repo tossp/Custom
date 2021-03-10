@@ -53,7 +53,6 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 ################################################################################################################
 Diy_lede2() {
 echo
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh /usr/bin/AdGuardHome"'' ./package/lean/default-settings/files/zzz-default-settings
 }
 
 ################################################################################################################
@@ -81,7 +80,6 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 Diy_lienol2() {
 echo
 rm -rf feeds/packages/net/adguardhome
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh /usr/bin/AdGuardHome"'' ./package/lean/default-settings/files/zzz-default-settings
 }
 
 ################################################################################################################
@@ -110,7 +108,6 @@ git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app
 ################################################################################################################
 Diy_immortalwrt2() {
 echo
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh /usr/bin/AdGuardHome"'' ./package/lean/default-settings/files/zzz-default-settings
 }
 ################################################################################################################
 
