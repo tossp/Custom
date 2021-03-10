@@ -53,7 +53,7 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 ################################################################################################################
 Diy_lede2() {
 echo
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
+sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh /usr/bin/AdGuardHome"'' ./package/lean/default-settings/files/zzz-default-settings
 }
 
 ################################################################################################################
@@ -81,7 +81,7 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 Diy_lienol2() {
 echo
 rm -rf feeds/packages/net/adguardhome
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/default-settings/files/zzz-default-settings
+sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh /usr/bin/AdGuardHome"'' ./package/lean/default-settings/files/zzz-default-settings
 }
 
 ################################################################################################################
@@ -110,7 +110,7 @@ git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app
 ################################################################################################################
 Diy_immortalwrt2() {
 echo
-sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh"'' ./package/lean/default-settings/files/zzz-default-settings
+sed -i '$i '"chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh /usr/bin/AdGuardHome"'' ./package/lean/default-settings/files/zzz-default-settings
 }
 ################################################################################################################
 
@@ -171,11 +171,9 @@ case "${REPO_URL}" in
 	if [[ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]]; then
 		if [[ "${TARGET_ADG}" == "x86-64" ]];then
 			svn co https://github.com/281677160/Custom/branches/AdGuard/x86-64/usr/bin ${Home}/files/usr/bin
-			chmod -R 777 ${Home}/files/usr/bin/AdGuardHome
 		fi
 		if [[ "${TARGET_ADG}" == "friendlyarm_nanopi-r2s" ]];then
 			svn co https://github.com/281677160/Custom/branches/AdGuard/R2S/usr/bin ${Home}/files/usr/bin
-			chmod -R 777 ${Home}/files/usr/bin/AdGuardHome
 		fi
 	fi
 ;;
