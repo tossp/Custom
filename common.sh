@@ -5,7 +5,7 @@
 
 # 全脚本源码通用diy.sh文件
 Diy_all() {
-echo "请使用3月9号凌晨发布的最新版仓库编译"
+echo "请使用3月9号凌晨发布的或之后的最新版仓库编译"
 git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
 mv "${PATH1}"/AutoBuild_Tools.sh package/base-files/files/bin
 chmod +x package/base-files/files/bin/AutoBuild_Tools.sh
