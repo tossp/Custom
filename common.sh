@@ -213,7 +213,7 @@ echo "" >>CHONGTU
 echo "   插件冲突会导致编译失败，以上操作如非您所需，请关闭此次编译，重新开始编译，避开冲突重新选择插件" >>CHONGTU
 echo "" >>CHONGTU
 else
-rm -rf {CHONGTU,Chajianlibiao}
+rm -rf CHONGTU
 fi
 }
 
