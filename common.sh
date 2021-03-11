@@ -140,11 +140,92 @@ fi
 }
 
 
+################################################################################################################
+# 判断插件冲突
+
+Diy_chajian() {
+echo "				插件冲突信息" > ${Home}/CHONGTU
+
+if [[ `grep -c "CONFIG_PACKAGE_luci-app-bypass_INCLUDE_V2ray=y" ${Home}/.config` -eq '1' ]]; then
+	sed -i 's/CONFIG_PACKAGE_luci-app-bypass_INCLUDE_V2ray=y/# CONFIG_PACKAGE_luci-app-bypass_INCLUDE_V2ray is not set/g' ${Home}/.config
+	echo -e "\nCONFIG_PACKAGE_luci-app-bypass=y" >> ${Home}/.config
+	echo " 您选择的luci-app-bypass勾选了V2ray，Xary已包含V2ray，已删除V2ray" >>CHONGTU
+	echo "插件冲突信息" > ${Home}/Chajianlibiao
+fi
+if [[ `grep -c "CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y" ${Home}/.config` -eq '1' ]]; then
+	sed -i 's/CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y/# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray is not set/g' ${Home}/.config
+	echo " 您选择的luci-app-ssr-plus勾选了V2ray，Xary已包含V2ray，已删除V2ray" >>CHONGTU
+	echo "插件冲突信息" > ${Home}/Chajianlibiao
+fi
+if [[ `grep -c "CONFIG_PACKAGE_luci-app-samba=y" ${Home}/.config` -eq '1' ]]; then
+	if [[ `grep -c "CONFIG_PACKAGE_luci-app-samba4=y" ${Home}/.config` -eq '1' ]]; then
+		sed -i 's/CONFIG_PACKAGE_autosamba=y/# CONFIG_PACKAGE_autosamba is not set/g' ${Home}/.config
+		sed -i 's/CONFIG_PACKAGE_luci-app-samba=y/# CONFIG_PACKAGE_luci-app-samba is not set/g' ${Home}/.config
+		sed -i 's/CONFIG_PACKAGE_luci-i18n-samba-zh-cn=y/# CONFIG_PACKAGE_luci-i18n-samba-zh-cn is not set/g' ${Home}/.config
+		sed -i 's/CONFIG_PACKAGE_samba36-server=y/# CONFIG_PACKAGE_samba36-server is not set/g' ${Home}/.config
+		echo " 您同时选择luci-app-samba和luci-app-samba4，插件有冲突，已删除luci-app-samba" >>CHONGTU
+		echo "插件冲突信息" > ${Home}/Chajianlibiao
+	fi
+	
+fi
+
+if [[ `grep -c "CONFIG_PACKAGE_luci-app-docker=y" ${Home}/.config` -eq '1' ]]; then
+	if [[ `grep -c "CONFIG_PACKAGE_luci-app-dockerman=y" ${Home}/.config` -eq '1' ]]; then
+		sed -i 's/CONFIG_PACKAGE_luci-app-dockerman=y/# CONFIG_PACKAGE_luci-app-dockerman is not set/g' ${Home}/.config
+		sed -i 's/CONFIG_PACKAGE_luci-lib-docker=y/# CONFIG_PACKAGE_luci-lib-docker is not set/g' ${Home}/.config
+		sed -i 's/CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn=y/# CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn is not set/g' ${Home}/.config
+		echo " 您同时选择luci-app-docker和luci-app-dockerman，插件有冲突，已删除luci-app-dockerman" >>CHONGTU
+		echo "插件冲突信息" > ${Home}/Chajianlibiao
+	fi
+	
+fi
+
+if [[ `grep -c "CONFIG_PACKAGE_luci-app-autopoweroff=y" ${Home}/.config` -eq '1' ]]; then
+	if [[ `grep -c "CONFIG_PACKAGE_luci-app-autoreboot=y" ${Home}/.config` -eq '1' ]]; then
+		sed -i 's/CONFIG_PACKAGE_luci-app-autoreboot=y/# CONFIG_PACKAGE_luci-app-autoreboot is not set/g' ${Home}/.config
+		sed -i 's/CONFIG_PACKAGE_luci-i18n-autoreboot-zh-cn=y/# CONFIG_PACKAGE_luci-i18n-autoreboot-zh-cn=y is not set/g' ${Home}/.config
+		echo " 您同时选择luci-app-autopoweroff和luci-app-autoreboot，插件有冲突，已删除luci-app-autoreboot" >>CHONGTU
+		echo "插件冲突信息" > ${Home}/Chajianlibiao
+	fi
+	
+fi
+
+if [[ `grep -c "CONFIG_PACKAGE_luci-app-advanced=y" ${Home}/.config` -eq '1' ]]; then
+	if [[ `grep -c "CONFIG_PACKAGE_luci-app-filebrowser=y" ${Home}/.config` -eq '1' ]]; then
+		sed -i 's/CONFIG_PACKAGE_luci-app-filebrowser=y/# CONFIG_PACKAGE_luci-app-filebrowser is not set/g' ${Home}/.config
+		sed -i 's/CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y/# CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y is not set/g' ${Home}/.config
+		echo " 您同时选择luci-app-advanced和luci-app-filebrowser，插件有冲突，已删除luci-app-filebrowser" >>CHONGTU
+		echo "插件冲突信息" > ${Home}/Chajianlibiao
+	fi
+	
+fi
+
+if [[ `grep -c "CONFIG_PACKAGE_luci-theme-argon=y" ${Home}/.config` -eq '1' ]]; then
+	if [[ `grep -c "CONFIG_PACKAGE_luci-theme-argon_new=y" ${Home}/.config` -eq '1' ]]; then
+		sed -i 's/CONFIG_PACKAGE_luci-theme-argon_new=y/# CONFIG_PACKAGE_luci-theme-argon_new is not set/g' ${Home}/.config
+		echo " 您同时选择luci-theme-argon和luci-theme-argon_new，插件有冲突，已删除luci-theme-argon_new" >>CHONGTU
+		echo "插件冲突信息" > ${Home}/Chajianlibiao
+	fi
+	
+fi
+if [ -n "$(ls -A "${Home}/Chajianlibiao" 2>/dev/null)" ]; then
+echo "" >>CHONGTU
+echo "	以上操作如非您所需，请关闭此次编译，重新开始编译，避开冲突重新选择插件" >>CHONGTU
+echo "" >>CHONGTU
+else
+rm -rf {CHONGTU,Chajianlibiao}
+fi
+}
 
 ################################################################################################################
 # 判断是否选择AdGuard Home是就指定机型给内核，判断是否选择v2ray，有就去掉
 
 Diy_adgu() {
+grep -i CONFIG_PACKAGE_luci-app .config | grep  -v \# >Plug-in
+sed -i "s/=y//g" Plug-in
+sed -i "s/CONFIG_PACKAGE_//g" Plug-in
+sed -i '/INCLUDE/d' Plug-in > /dev/null 2>&1
+
 if [ `grep -c "CONFIG_TARGET_x86_64=y" ${Home}/.config` -eq '1' ]; then
 	TARGET_ADG="x86-64"
 else
@@ -190,8 +271,6 @@ case "${REPO_URL}" in
 ;;
 esac
 }
-
-
 
 ################################################################################################################
 # N1、微加云、贝壳云、我家云、S9xxx 打包程序
@@ -289,7 +368,7 @@ if [[ ${SSHYC} == "true" ]]; then
 	echo " SSH远程连接临时开关: 开启"
 fi
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
-	echo ""
+	echo
 	echo " 把定时自动更新插件编译进固件: 开启"
 	echo " 插件版本: ${AutoUpdate_Version}"
 	echo " 固件名称: ${Firmware_mz}"
@@ -297,17 +376,30 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 	echo " 固件版本: ${Openwrt_Version}"
 	echo " 云端路径: ${Github_UP_RELEASE}"
 	echo " 《编译成功，会自动把固件发布到指定地址，然后才会生成云端路径》"
+	echo " 《5.0版本跟5.2版本的检测机制不一样，首次编译完5.2版本的请手动安装5.2版本编译的固件》"
+	echo " 《普通的那个发布固件跟云端的发布路径是两码事，如果你不需要普通发布的可以不用打开发布功能》"
 	echo " 《请把“REPO_TOKEN”密匙设置好,没设置好密匙不能发布就生成不了云端地址》"
 	echo " 《x86-64、phicomm_k2p、phicomm-k3、newifi-d2已自动适配固件名字跟后缀，无需自行设置》"
 	echo " 《如有其他机子可以用定时更新固件的话，请告诉我，我把固件名字跟后缀适配了》"
-	echo ""
+	echo
 else
 	echo " 把定时自动更新插件编译进固件: 关闭"
-	echo ""
+	echo
 fi
-echo " * 您当前使用的是【${Modelfile}】文件夹编译【${TARGET_PROFILE}】固件,请核对以上信息是否正确！*"
-echo ""
-echo ""
+echo " * 您当前使用的是【${Modelfile}】文件夹编译【${TARGET_PROFILE}】固件,编译时间 $(TZ=UTC-8 date "+%Y年%m月%d日")！*"
+echo
 echo " 系统空间      类型   总数  已用  可用 使用率"
 cd ../ && df -hT $PWD && cd openwrt
+echo
+if [ -n "$(ls -A "${Home}/Chajianlibiao" 2>/dev/null)" ]; then
+	echo
+	[ -s CHONGTU ] && cat CHONGTU
+fi
+if [ -n "$(ls -A "${Home}/Plug-in" 2>/dev/null)" ]; then
+	echo
+	echo "	   已选插件列表"
+	[ -s Plug-in ] && cat -n Plug-in
+	echo
+fi
+rm -rf {CHONGTU,Plug-in,Chajianlibiao}
 }
