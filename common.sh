@@ -34,6 +34,8 @@ Diy_lede() {
 cp -Rf build/common/LEDE/* "${PATH1}"
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
 sed -i 's/iptables -t nat/# iptables -t nat/g' package/lean/default-settings/files/zzz-default-settings
+chmod -R 777 package/danshui/luci-app-adguardhome/root/etc/init.d/AdGuardHome
+chmod -R 777 package/danshui/luci-app-adguardhome/root/usr/share/AdGuardHome/addhost.sh
 if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
 echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
@@ -65,6 +67,8 @@ Diy_lienol() {
 cp -Rf build/common/LIENOL/* "${PATH1}"
 rm -rf package/diy/luci-app-adguardhome
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
+chmod -R 777 package/danshui/luci-app-adguardhome/root/etc/init.d/AdGuardHome
+chmod -R 777 package/danshui/luci-app-adguardhome/root/usr/share/AdGuardHome/addhost.sh
 git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall package/danshui/luci-app-passwall
 git clone https://github.com/jerrykuku/luci-app-vssr package/danshui/luci-app-vssr
