@@ -294,7 +294,7 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 Diy_notice() {
 echo ""
 echo "	《公告内容》"
-echo " 3月11号早上11点增加了所选插件信息,有需要的请复制最新的build-openwrt.yml文件内容粘贴到你的build-openwrt.yml上"
+echo " 3月11号早上11点增加了所选插件信息,如果使用的是3月9号最新版有需要的请复制最新的build-openwrt.yml文件内容粘贴到你的build-openwrt.yml上"
 echo " 请大家使用3月9号最新版仓库编译"
 echo " 把定时更新固件升级到5.2版本"
 echo " x86-64、phicomm-k3、newifi-d2、phicomm_k2p自动适配固件名字跟后缀,无需设置"
