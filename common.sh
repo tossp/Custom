@@ -11,7 +11,7 @@ LIZZZ="package/default-settings/files/zzz-default-settings"
 # 全脚本源码通用diy.sh文件
 Diy_all() {
 DIY_GET_COMMON_SH
-echo "请使用3月9号凌晨发布的或之后的最新版仓库编译"
+echo "3月13号中午更新有更新（请看公告）"
 git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
 mv "${PATH1}"/AutoBuild_Tools.sh package/base-files/files/bin
 chmod +x package/base-files/files/bin/AutoBuild_Tools.sh
@@ -310,6 +310,7 @@ devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 Diy_notice() {
 echo ""
 echo "	《公告内容》"
+echo " 3月13号中午12点正更新：重新排版了信息显示，修复了一小BUG，请大家复制最新的build-openwrt.yml文件内容粘贴到你的build-openwrt.yml上"
 echo " 3月11号早上11点增加了所选插件信息,如果使用的是3月9号最新版有需要的请复制最新的build-openwrt.yml文件内容粘贴到你的build-openwrt.yml上"
 echo " 请大家使用3月9号最新版仓库编译"
 echo " 把定时更新固件升级到5.2版本"
