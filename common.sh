@@ -159,6 +159,7 @@ fi
 
 Diy_chajian() {
 DIY_GET_COMMON_SH
+echo
 echo "				插件冲突信息" > ${Home}/CHONGTU
 
 if [[ `grep -c "CONFIG_PACKAGE_luci-app-bypass_INCLUDE_V2ray=y" ${Home}/.config` -eq '1' ]]; then
@@ -234,7 +235,6 @@ fi
 
 Diy_adgu() {
 DIY_GET_COMMON_SH
-echo
 grep -i CONFIG_PACKAGE_luci-app .config | grep  -v \# >Plug-in
 sed -i "s/=y//g" Plug-in
 sed -i "s/CONFIG_PACKAGE_//g" Plug-in
