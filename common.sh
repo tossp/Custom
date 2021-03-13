@@ -240,7 +240,7 @@ sed -i "s/CONFIG_PACKAGE_//g" Plug-in
 sed -i '/INCLUDE/d' Plug-in > /dev/null 2>&1
 cat -n Plug-in > Plugin
 sed -i 's/	luci/、luci/g' Plugin
-awk '{print "    " $0}' Plugin > Plug-in
+awk '{print "   " $0}' Plugin > Plug-in
 
 if [ `grep -c "CONFIG_TARGET_x86_64=y" ${Home}/.config` -eq '1' ]; then
 	TARGET_ADG="x86-64"
