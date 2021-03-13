@@ -230,17 +230,18 @@ fi
 
 
 ################################################################################################################
-# 判断是否选择AdGuard Home是就指定机型给内核，判断是否选择v2ray，有就去掉
+# 判断是否选择AdGuard Home是就指定机型给内核
 
 Diy_adgu() {
 DIY_GET_COMMON_SH
+echo
 grep -i CONFIG_PACKAGE_luci-app .config | grep  -v \# >Plug-in
 sed -i "s/=y//g" Plug-in
 sed -i "s/CONFIG_PACKAGE_//g" Plug-in
 sed -i '/INCLUDE/d' Plug-in > /dev/null 2>&1
 cat -n Plug-in > Plugin
 sed -i 's/	luci/、luci/g' Plugin
-awk '{print "   " $0}' Plugin > Plug-in
+awk '{print "  " $0}' Plugin > Plug-in
 
 if [ `grep -c "CONFIG_TARGET_x86_64=y" ${Home}/.config` -eq '1' ]; then
 	TARGET_ADG="x86-64"
