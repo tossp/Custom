@@ -22,9 +22,6 @@ git clone https://github.com/openwrt-dev/po2lmo.git
 pushd po2lmo
 make && sudo make install
 popd
-rm -rf {LICENSE,README,README.md}
-rm -rf ./*/{LICENSE,README,README.md}
-rm -rf ./*/*/{LICENSE,README,README.md}
 }
 
 ################################################################################################################
@@ -269,6 +266,11 @@ case "${REPO_URL}" in
 	fi
 ;;
 esac
+
+rm -rf {LICENSE,README,README.md,CONTRIBUTED.md,README_EN.md}
+rm -rf ./*/{LICENSE,README,README.md}
+rm -rf ./*/*/{LICENSE,README,README.md}
+rm -rf ./*/*/*/{LICENSE,README,README.md}
 }
 
 ################################################################################################################
