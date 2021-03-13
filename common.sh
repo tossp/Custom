@@ -3,8 +3,14 @@
 # common Module by 28677160
 # matrix.target=${Modelfile}
 
+DIY_GET_COMMON_SH() {
+TYZZZ="package/lean/default-settings/files/zzz-default-settings"
+LIZZZ="package/default-settings/files/zzz-default-settings"
+}
+
 # 全脚本源码通用diy.sh文件
 Diy_all() {
+DIY_GET_COMMON_SH
 echo "请使用3月9号凌晨发布的或之后的最新版仓库编译"
 git clone -b $REPO_BRANCH --single-branch https://github.com/281677160/openwrt-package package/danshui
 mv "${PATH1}"/AutoBuild_Tools.sh package/base-files/files/bin
@@ -18,6 +24,7 @@ fi
 
 # 全脚本源码通用diy2.sh文件
 Diy_all2() {
+DIY_GET_COMMON_SH
 git clone https://github.com/openwrt-dev/po2lmo.git
 pushd po2lmo
 make && sudo make install
@@ -29,8 +36,9 @@ popd
 # LEDE源码通用diy1.sh文件
 ################################################################################################################
 Diy_lede() {
+DIY_GET_COMMON_SH
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
-sed -i 's/iptables -t nat/# iptables -t nat/g' package/lean/default-settings/files/zzz-default-settings
+sed -i 's/iptables -t nat/# iptables -t nat/g' ${TYZZZ}
 if [[ "${Modelfile}" == "Lede_x86_64" ]]; then
 sed -i '/IMAGES_GZIP/d' "${PATH1}/${CONFIG_FILE}" > /dev/null 2>&1
 echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
@@ -48,11 +56,12 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 ################################################################################################################
 # LEDE源码通用diy2.sh文件
 Diy_lede2() {
+DIY_GET_COMMON_SH
 cp -Rf "${Home}"/build/common/LEDE/files "${Home}"
 cp -Rf "${Home}"/build/common/LEDE/diy/* "${Home}"
-sed -i "/exit 0/i\sed -i '/luciname/d' /usr/lib/lua/luci/version.lua" package/lean/default-settings/files/zzz-default-settings
-sed -i "/exit 0/i\sed -i '/luciversion/d' /usr/lib/lua/luci/version.lua" package/lean/default-settings/files/zzz-default-settings
-sed -i "/exit 0/i\echo 'luciversion\ =\ \"18.06-SNAPSHOT\"' >> /usr/lib/lua/luci/version.lua" package/lean/default-settings/files/zzz-default-settings
+sed -i "/exit 0/i\sed -i '/luciname/d' /usr/lib/lua/luci/version.lua" ${TYZZZ}
+sed -i "/exit 0/i\sed -i '/luciversion/d' /usr/lib/lua/luci/version.lua" ${TYZZZ}
+sed -i "/exit 0/i\echo 'luciversion\ =\ \"18.06-SNAPSHOT\"' >> /usr/lib/lua/luci/version.lua" ${TYZZZ}
 }
 
 
@@ -60,6 +69,7 @@ sed -i "/exit 0/i\echo 'luciversion\ =\ \"18.06-SNAPSHOT\"' >> /usr/lib/lua/luci
 # LIENOL源码通用diy1.sh文件
 ################################################################################################################
 Diy_lienol() {
+DIY_GET_COMMON_SH
 rm -rf package/diy/luci-app-adguardhome
 rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
 git clone https://github.com/fw876/helloworld package/danshui/luci-app-ssr-plus
@@ -74,11 +84,12 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 ################################################################################################################
 # LIENOL源码通用diy2.sh文件
 Diy_lienol2() {
+DIY_GET_COMMON_SH
 cp -Rf "${Home}"/build/common/LIENOL/files "${Home}"
 cp -Rf "${Home}"/build/common/LIENOL/diy/* "${Home}"
 rm -rf feeds/packages/net/adguardhome
-sed -i "/exit 0/i\sed -i 's/<%=pcdata(ver.distversion)%>/<%=pcdata(ver.distversion)%><!--/g' /usr/lib/lua/luci/view/admin_status/index.htm" package/default-settings/files/zzz-default-settings
-sed -i "/exit 0/i\sed -i 's/(<%=pcdata(ver.luciversion)%>)/(<%=pcdata(ver.luciversion)%>)-->/g' /usr/lib/lua/luci/view/admin_status/index.htm" package/default-settings/files/zzz-default-settings
+sed -i "/exit 0/i\sed -i 's/<%=pcdata(ver.distversion)%>/<%=pcdata(ver.distversion)%><!--/g' /usr/lib/lua/luci/view/admin_status/index.htm" ${LIZZZ}
+sed -i "/exit 0/i\sed -i 's/(<%=pcdata(ver.luciversion)%>)/(<%=pcdata(ver.luciversion)%>)-->/g' /usr/lib/lua/luci/view/admin_status/index.htm" ${LIZZZ}
 sed -i 's/DEFAULT_PACKAGES +=/DEFAULT_PACKAGES += luci-app-passwall/g' target/linux/x86/Makefile
 }
 
@@ -87,6 +98,7 @@ sed -i 's/DEFAULT_PACKAGES +=/DEFAULT_PACKAGES += luci-app-passwall/g' target/li
 # 天灵源码通用diy1.sh文件
 ################################################################################################################
 Diy_immortalwrt() {
+DIY_GET_COMMON_SH
 rm -rf package/lienol/luci-app-timecontrol
 rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3}
 rm -rf package/lean/luci-theme-argon
@@ -102,11 +114,12 @@ git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app
 ################################################################################################################
 # 天灵源码通用diy2.sh文件
 Diy_immortalwrt2() {
+DIY_GET_COMMON_SH
 cp -Rf "${Home}"/build/common/PROJECT/files "${Home}"
 cp -Rf "${Home}"/build/common/PROJECT/diy/* "${Home}"
-sed -i "/exit 0/i\sed -i '/luciname/d' /usr/lib/lua/luci/version.lua" package/lean/default-settings/files/zzz-default-settings
-sed -i "/exit 0/i\sed -i '/luciversion/d' /usr/lib/lua/luci/version.lua" package/lean/default-settings/files/zzz-default-settings
-sed -i "/exit 0/i\echo 'luciversion\ =\ \"OpenWrt\"' >> /usr/lib/lua/luci/version.lua" package/lean/default-settings/files/zzz-default-settings
+sed -i "/exit 0/i\sed -i '/luciname/d' /usr/lib/lua/luci/version.lua" ${TYZZZ}
+sed -i "/exit 0/i\sed -i '/luciversion/d' /usr/lib/lua/luci/version.lua" ${TYZZZ}
+sed -i "/exit 0/i\echo 'luciversion\ =\ \"OpenWrt\"' >> /usr/lib/lua/luci/version.lua" ${TYZZZ}
 }
 
 
@@ -114,6 +127,7 @@ sed -i "/exit 0/i\echo 'luciversion\ =\ \"OpenWrt\"' >> /usr/lib/lua/luci/versio
 # 判断脚本是否缺少主要文件（如果缺少settings.ini设置文件在检测脚本设置就运行错误了）
 
 Diy_settings() {
+DIY_GET_COMMON_SH
 rm -rf ${Home}/build/QUEWENJIANerros
 if [ -z "$(ls -A "$PATH1/${CONFIG_FILE}" 2>/dev/null)" ]; then
 	echo
@@ -144,6 +158,7 @@ fi
 # 判断插件冲突
 
 Diy_chajian() {
+DIY_GET_COMMON_SH
 echo "				插件冲突信息" > ${Home}/CHONGTU
 
 if [[ `grep -c "CONFIG_PACKAGE_luci-app-bypass_INCLUDE_V2ray=y" ${Home}/.config` -eq '1' ]]; then
@@ -218,6 +233,7 @@ fi
 # 判断是否选择AdGuard Home是就指定机型给内核，判断是否选择v2ray，有就去掉
 
 Diy_adgu() {
+DIY_GET_COMMON_SH
 grep -i CONFIG_PACKAGE_luci-app .config | grep  -v \# >Plug-in
 sed -i "s/=y//g" Plug-in
 sed -i "s/CONFIG_PACKAGE_//g" Plug-in
@@ -231,7 +247,7 @@ fi
 case "${REPO_URL}" in
 "${LEDE}")
 	if [[ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]]; then
-		sed -i "/exit 0/i\chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh" package/lean/default-settings/files/zzz-default-settings
+		sed -i "/exit 0/i\chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh" ${TYZZZ}
 		if [[ "${TARGET_ADG}" == "x86-64" ]];then
 			svn co https://github.com/281677160/Custom/branches/AdGuard/x86-64/usr/bin ${Home}/files/usr/bin
 			chmod -R 777 ${Home}/files/usr/bin/AdGuardHome
@@ -244,7 +260,7 @@ case "${REPO_URL}" in
 ;;
 "${LIENOL}") 
 	if [[ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]]; then
-		sed -i "/exit 0/i\chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh" package/default-settings/files/zzz-default-settings
+		sed -i "/exit 0/i\chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh" ${LIZZZ}
 		if [[ "${TARGET_ADG}" == "x86-64" ]];then
 			svn co https://github.com/281677160/Custom/branches/AdGuard/x86-64/usr/bin ${Home}/files/usr/bin
 			chmod -R 777 ${Home}/files/usr/bin/AdGuardHome
@@ -257,7 +273,7 @@ case "${REPO_URL}" in
 ;;
 "${PROJECT}") 
 	if [[ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]]; then
-		sed -i "/exit 0/i\chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh" package/lean/default-settings/files/zzz-default-settings
+		sed -i "/exit 0/i\chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh" ${TYZZZ}
 	fi
 ;;
 esac
@@ -273,6 +289,7 @@ rm -rf ./*/*/*/{LICENSE,README,README.md}
 # N1、微加云、贝壳云、我家云、S9xxx 打包程序
 
 Diy_n1() {
+DIY_GET_COMMON_SH
 cd ../
 svn co https://github.com/281677160/N1/trunk reform
 cp openwrt/bin/targets/armvirt/*/*.tar.gz reform/openwrt
