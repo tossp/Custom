@@ -318,7 +318,8 @@ echo " x86-64、phicomm-k3、newifi-d2、phicomm_k2p自动适配固件名字跟�
 echo " 优化了脚本,最新版修复了AdGuardHome权限问题不能启动"
 echo " x86-64跟R2S编译AdGuardHome自动增加核心,免除下载"
 echo " 没使用3月9号最新版本的会在加载源那里就出错了，请大家注意"
-echo "[Telegram交流群] https://t.me/joinchat/AAAAAE3eOMwEHysw9HMcVQ"
+echo " [Telegram交流群] https://t.me/joinchat/AAAAAE3eOMwEHysw9HMcVQ"
+echo " 脚本地址：https://github.com/281677160/build-openwrt"
 echo ""
 }
 
