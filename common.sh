@@ -24,6 +24,7 @@ make && sudo make install
 popd
 }
 
+
 ################################################################################################################
 # LEDE源码通用diy1.sh文件
 ################################################################################################################
@@ -46,7 +47,6 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 }
 ################################################################################################################
 # LEDE源码通用diy2.sh文件
-################################################################################################################
 Diy_lede2() {
 cp -Rf "${Home}"/build/common/LEDE/files "${Home}"
 cp -Rf "${Home}"/build/common/LEDE/diy/* "${Home}"
@@ -54,8 +54,6 @@ sed -i "/exit 0/i\sed -i '/luciname/d' /usr/lib/lua/luci/version.lua" package/le
 sed -i "/exit 0/i\sed -i '/luciversion/d' /usr/lib/lua/luci/version.lua" package/lean/default-settings/files/zzz-default-settings
 sed -i "/exit 0/i\echo 'luciversion\ =\ \"18.06-SNAPSHOT\"' >> /usr/lib/lua/luci/version.lua" package/lean/default-settings/files/zzz-default-settings
 }
-
-################################################################################################################
 
 
 ################################################################################################################
@@ -75,7 +73,6 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 }
 ################################################################################################################
 # LIENOL源码通用diy2.sh文件
-################################################################################################################
 Diy_lienol2() {
 cp -Rf "${Home}"/build/common/LIENOL/files "${Home}"
 cp -Rf "${Home}"/build/common/LIENOL/diy/* "${Home}"
@@ -84,8 +81,6 @@ sed -i "/exit 0/i\sed -i 's/<%=pcdata(ver.distversion)%>/<%=pcdata(ver.distversi
 sed -i "/exit 0/i\sed -i 's/(<%=pcdata(ver.luciversion)%>)/(<%=pcdata(ver.luciversion)%>)-->/g' /usr/lib/lua/luci/view/admin_status/index.htm" package/default-settings/files/zzz-default-settings
 sed -i 's/DEFAULT_PACKAGES +=/DEFAULT_PACKAGES += luci-app-passwall/g' target/linux/x86/Makefile
 }
-
-################################################################################################################
 
 
 ################################################################################################################
@@ -106,7 +101,6 @@ git clone https://github.com/garypang13/luci-app-bypass package/danshui/luci-app
 
 ################################################################################################################
 # 天灵源码通用diy2.sh文件
-################################################################################################################
 Diy_immortalwrt2() {
 cp -Rf "${Home}"/build/common/PROJECT/files "${Home}"
 cp -Rf "${Home}"/build/common/PROJECT/diy/* "${Home}"
@@ -114,7 +108,7 @@ sed -i "/exit 0/i\sed -i '/luciname/d' /usr/lib/lua/luci/version.lua" package/le
 sed -i "/exit 0/i\sed -i '/luciversion/d' /usr/lib/lua/luci/version.lua" package/lean/default-settings/files/zzz-default-settings
 sed -i "/exit 0/i\echo 'luciversion\ =\ \"OpenWrt\"' >> /usr/lib/lua/luci/version.lua" package/lean/default-settings/files/zzz-default-settings
 }
-################################################################################################################
+
 
 ################################################################################################################
 # 判断脚本是否缺少主要文件（如果缺少settings.ini设置文件在检测脚本设置就运行错误了）
@@ -219,6 +213,7 @@ rm -rf CHONGTU
 fi
 }
 
+
 ################################################################################################################
 # 判断是否选择AdGuard Home是就指定机型给内核，判断是否选择v2ray，有就去掉
 
@@ -273,6 +268,7 @@ rm -rf ./*/*/{LICENSE,README,README.md}
 rm -rf ./*/*/*/{LICENSE,README,README.md}
 }
 
+
 ################################################################################################################
 # N1、微加云、贝壳云、我家云、S9xxx 打包程序
 
@@ -285,8 +281,6 @@ sudo ./gen_openwrt -d -k latest
          
 devices=("phicomm-n1" "rk3328" "s9xxx" "vplus")
 }
-
-################################################################################################################
 
 
 ################################################################################################################
@@ -305,7 +299,6 @@ echo " 没使用3月9号最新版本的会在加载源那里就出错了，请�
 echo "[Telegram交流群] https://t.me/joinchat/AAAAAE3eOMwEHysw9HMcVQ"
 echo ""
 }
-################################################################################################################
 
 
 ################################################################################################################
