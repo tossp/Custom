@@ -391,8 +391,8 @@ fi
 if [[ ${SSHYC} == "true" ]]; then
 	echo " SSH远程连接临时开关: 开启"
 fi
-echo
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
+	echo
 	echo " 把定时自动更新插件编译进固件: 开启"
 	echo " 插件版本: ${AutoUpdate_Version}"
 	echo " 固件名称: ${Firmware_mz}"
