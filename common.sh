@@ -220,14 +220,25 @@ if [[ `grep -c "CONFIG_PACKAGE_luci-theme-argon=y" ${Home}/.config` -eq '1' ]]; 
 		echo " 您同时选择luci-theme-argon和luci-theme-argon_new，插件有冲突，已删除luci-theme-argon_new" >>CHONGTU
 		echo "插件冲突信息" > ${Home}/Chajianlibiao
 	fi
-	
+
+fi
+if [[ `grep -c "CONFIG_TARGET_ROOTFS_EXT4FS=y" .config` -eq '1' ]]; then
+	echo " 请注意，您选择了ext4安装的固件格式" > ${Home}/EXT4
+	echo " 请在Target Images  --->里面的下面两项的数值调整" >> ${Home}/EXT4
+	echo " （16）Kernel partition size (in MB) " >> ${Home}/EXT4
+	echo " （160）Root filesystem partition size (in MB)" >> ${Home}/EXT4
+	echo " 请把（16）Kernel partition size (in MB) 设置成（30）Kernel partition size (in MB) 或者更高数值 " >> ${Home}/EXT4
+	echo " 请把（160）Root filesystem partition size (in MB) 设置成（950）Root filesystem partition size (in MB) 或者更高数值" >> ${Home}/EXT4
+	echo " （160）Root filesystem partition size (in MB) 这项设置数值请避免使用‘128’、‘256’、‘512’、‘1024’等之类的数值" >> ${Home}/EXT4
+	echo " 选择了ext4安装格式的固件，（160）Root filesystem partition size (in MB) 这项数值太低容易造成插件空间不足编译错误" >> ${Home}/EXT4
+	echo " " >> ${Home}/EXT4
 fi
 if [ -n "$(ls -A "${Home}/Chajianlibiao" 2>/dev/null)" ]; then
-echo "" >>CHONGTU
-echo "   插件冲突会导致编译失败，以上操作如非您所需，请关闭此次编译，重新开始编译，避开冲突重新选择插件" >>CHONGTU
-echo "" >>CHONGTU
+	echo "" >>CHONGTU
+	echo "   插件冲突会导致编译失败，以上操作如非您所需，请关闭此次编译，重新开始编译，避开冲突重新选择插件" >>CHONGTU
+	echo "" >>CHONGTU
 else
-rm -rf CHONGTU
+	rm -rf CHONGTU
 fi
 }
 
@@ -409,6 +420,10 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 else
 	echo " 把定时自动更新插件编译进固件: 关闭"
 	echo
+fi
+if [ -n "$(ls -A "${Home}/EXT4" 2>/dev/null)" ]; then
+	[ -s EXT4 ] && cat EXT4
+	rm -rf EXT4
 fi
 echo " 系统空间      类型   总数  已用  可用 使用率"
 cd ../ && df -hT $PWD && cd openwrt
