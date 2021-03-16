@@ -117,7 +117,6 @@ cp -Rf "${Home}"/build/common/PROJECT/files "${Home}"
 cp -Rf "${Home}"/build/common/PROJECT/diy/* "${Home}"
 sed -i '/exit 0/i\echo "*/1 * * * * chmod +x /etc/webweb && source /etc/webweb" >> /etc/crontabs/root' ${TYZZZ}
 sed -i "/exit 0/i\sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release" ${TYZZZ}
-sed -i "s/PTION='%D %V %C'/PTION='%D %V'/g" package/base-files/files/etc/openwrt_release
 if [[ `grep -c "0.105.1" ${Home}/feeds/packages/net/adguardhome/Makefile` -eq '1' ]]; then
 	sed -i 's/0.105.1/0.105.2/g' ${Home}/feeds/packages/net/adguardhome/Makefile
 fi
