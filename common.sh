@@ -25,7 +25,7 @@ fi
 # 全脚本源码通用diy2.sh文件
 Diy_all2() {
 DIY_GET_COMMON_SH
-git clone https://github.com/openwrt-dev/po2lmo.git
+git clone https://github.com/kongfl888/po2lmo
 pushd po2lmo
 make && sudo make install
 popd
