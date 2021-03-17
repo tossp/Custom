@@ -273,6 +273,20 @@ if [[ ! "${GET_MD5}" == "${CURRENT_MD5}" ]];then
 else
 	TIME && echo -e "MD5 对比成功!"
 fi
+GET_SHA256=$(awk -F '[ :]' '/SHA256/ {print $2;exit}' ${Firmware_Detail})
+CURRENT_SHA256=$(sha256sum ${Firmware} | cut -d ' ' -f1)
+echo -e "\n本地固件SHA256:${CURRENT_MD5}"
+echo "云端固件SHA256:${GET_SHA256}"
+if [[ -z "${GET_SHA256}" ]] || [[ -z "${CURRENT_SHA256}" ]];then
+        TIME && echo -e "SHA256 获取失败!"
+        exit
+fi
+if [[ ! "${GET_SHA256}" == "${CURRENT_SHA256}" ]];then
+        TIME && echo -e "SHA256 对比失败,请检查网络后重试!"
+        exit
+else
+        TIME && echo -e "SHA256 对比成功!"
+fi
 if [[ ${Compressed_x86} == 1 ]];then
 	TIME && echo "检测到固件为 [.gz] 压缩格式,开始解压固件..."
 	Install_Pkg gzip
