@@ -175,8 +175,13 @@ fi
 if [[ ! "${Force_Update}" == "1" ]] && [[ ! "${AutoUpdate_Mode}" == "1" ]];then
 	grep "curl" /tmp/Package_list > /dev/null 2>&1
 	if [[ ! $? -ne 0 ]];then
-		Google_Check=$(curl -I -s --connect-timeout 5 www.google.com -w %{http_code} | tail -n1)
-		[ ! "$Google_Check" == 200 ] && TIME && echo "梯子翻墙失败,可能导致固件下载速度缓慢!"
+		Google_Check=$(curl -I -s --connect-timeout 12 www.google.com -w %{http_code} | tail -n1)
+		if [[ ! "$Google_Check" == 200 ]];then 
+			TIME && echo "梯子翻墙失败,可能导致固件下载速度缓慢或失败!"
+		fi
+		if [[ "$Google_Check" == 200 ]];then 
+			TIME && echo "梯子翻墙成功,您可以愉快的玩耍了!"
+		fi
 	fi
 fi
 Install_Pkg wget
@@ -211,13 +216,24 @@ echo "固件格式: ${Firmware_GESHI}"
 echo -e "\n当前固件版本: ${CURRENT_Ver}"
 echo "云端固件版本: ${GET_Version}"
 if [[ ! ${Force_Update} == 1 ]];then
-	if [[ ${CURRENT_Version} == ${GET_Version} ]];then
+	if [[ ${CURRENT_Version} -eq ${GET_Version} ]];then
 		[[ "${AutoUpdate_Mode}" == "1" ]] && exit
-		TIME && read -p "已是最新版本,是否强制更新固件?[Y/n]:" Choose
+		TIME && read -p "当前版本和云端最新版本一致，是否还要安装固件?[Y/n]:" Choose
 		if [[ "${Choose}" == Y ]] || [[ "${Choose}" == y ]];then
-			TIME && echo "开始强制更新固件..."
+			TIME && echo "开始重新安装固件..."
 		else
-			TIME && echo "已取消强制更新,即将退出更新程序..."
+			TIME && echo "已取消重新安装固件,即将退出程序..."
+			sleep 2
+			exit
+		fi
+	fi
+	if [[ ${CURRENT_Version} -lt ${GET_Version} ]];then
+		[[ "${AutoUpdate_Mode}" == "1" ]] && exit
+		TIME && read -p "当前版本高于云端版本,是否使用云端版本覆盖现有固件?[Y/n]:" Choose
+		if [[ "${Choose}" == Y ]] || [[ "${Choose}" == y ]];then
+			TIME && echo "开始使用云端版本覆盖现有固件..."
+		else
+			TIME && echo "已取消覆盖固件,退出程序..."
 			sleep 2
 			exit
 		fi
@@ -268,11 +284,14 @@ if [[ ${Compressed_x86} == 1 ]];then
 		exit
 	fi
 fi
-TIME && echo -e "一切准备就绪,5s 后开始更新固件...\n"
+TIME && echo -e "一切准备就绪,5秒后开始更新固件...\n"
 sleep 5
-TIME && echo -e "正在更新固件,期间请耐心等待..."
-sysupgrade ${Upgrade_Options} ${Firmware}
-if [[ $? -ne 0 ]];then
+TIME && echo -e "正在更新固件,请耐心等候..."
+if [[ $? -eq 0 ]];then
+	TIME && echo "固件安装成功，一分钟后请尝试重新登录OpenWRT!"
+	exit
+else	
 	TIME && echo "固件刷写失败,请尝试不保留配置[-n]或手动下载固件!"
 	exit
 fi
+sysupgrade ${Upgrade_Options} ${Firmware}
