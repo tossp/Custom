@@ -275,7 +275,7 @@ else
 fi
 GET_SHA256=$(awk -F '[ :]' '/SHA256/ {print $2;exit}' ${Firmware_Detail})
 CURRENT_SHA256=$(sha256sum ${Firmware} | cut -d ' ' -f1)
-echo -e "\n本地固件SHA256:${CURRENT_MD5}"
+echo -e "\n本地固件SHA256:${CURRENT_SHA256}"
 echo "云端固件SHA256:${GET_SHA256}"
 if [[ -z "${GET_SHA256}" ]] || [[ -z "${CURRENT_SHA256}" ]];then
         TIME && echo -e "SHA256 获取失败!"
