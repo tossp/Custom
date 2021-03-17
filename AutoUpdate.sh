@@ -20,7 +20,7 @@ Install_Pkg() {
 			Choose="Y"
 		fi
 		if [[ "${Choose}" == Y ]] || [[ "${Choose}" == y ]];then
-			TIME && echo -e "开始安装[${PKG_NAME}],请耐心等待...\n"
+			TIME && echo -e "开始下载[${PKG_NAME}],请耐心等待...\n"
 			opkg update > /dev/null 2>&1
 			opkg install ${PKG_NAME}
 			if [[ $? -ne 0 ]];then
