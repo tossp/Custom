@@ -287,11 +287,11 @@ fi
 TIME && echo -e "一切准备就绪,5秒后开始更新固件...\n"
 sleep 5
 TIME && echo -e "正在更新固件,请耐心等候..."
-if [[ $? -eq 0 ]];then
+sysupgrade ${Upgrade_Options} ${Firmware}
+if [[ $? -ne 0 ]];then
 	TIME && echo "固件安装成功，一分钟后请尝试重新登录OpenWRT!"
 	exit
 else	
 	TIME && echo "固件刷写失败,请尝试不保留配置[-n]或手动下载固件!"
 	exit
 fi
-sysupgrade ${Upgrade_Options} ${Firmware}
